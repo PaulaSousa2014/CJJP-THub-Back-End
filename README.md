@@ -95,16 +95,10 @@ T-Hub is an LFG-type application directed only to T-Systems employees with the a
     <img src="https://user-images.githubusercontent.com/58307741/235126947-ea7ea55c-91cd-43ed-b746-98654a7b2aa6.png" width="401">
 </p>
 
-Development team composed of the following members:
-
-  - [Paula Martins de Sousa](https://github.com/PaulaSousa2014)
-
-
-  - [Josep Maria Pallàs Batalla](https://github.com/BasementHalfStackDev)
-
-
-  - [Javier Pérez](https://github.com/jvprz)
-
-
-  - [Camila Garcia](https://github.com/camilagarcia36)
+|   Developer   |             GitHub Profile              |           Role           |   Project   | Incorporation Date |    Version    |
+| ------------- | --------------------------------------- | ------------------------ | ------------| ------------------ | ------------- |
+|  Paula Sousa  |    https://github.com/PaulaSousa2014    | Full-Stack Web Developer |    T-Hub    |     21-04-2023     |      1.0      |
+|  Josep Pallàs | https://github.com/BasementHalfStackDev | Full-Stack Web Developer |    T-Hub    |     21-04-2023     |      1.0      |
+|  Javier Pérez |         https://github.com/jvprz        | Full-Stack Web Developer |    T-Hub    |     21-04-2023     |      1.0      |
+| Camila Garcia |    https://github.com/camilagarcia36    | Full-Stack Web Developer |    T-Hub    |     21-04-2023     |      1.0      |
 
