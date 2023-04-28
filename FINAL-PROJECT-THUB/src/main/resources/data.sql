@@ -1,0 +1,159 @@
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS party_memberlist;
+DROP TABLE IF EXISTS parties;
+DROP TABLE IF EXISTS activities;
+DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS social;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS likes;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS private_messages;
+DROP TABLE IF EXISTS friend_request;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS jobs;
+DROP TABLE IF EXISTS offices;
+
+CREATE TABLE IF NOT EXISTS offices (
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(50) NOT NULL,
+location VARCHAR(150)NOT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS jobs (
+id INT NOT NULL AUTO_INCREMENT,
+title VARCHAR(255) NOT NULL,
+description VARCHAR(255) DEFAULT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS categories (
+name VARCHAR(255) NOT NULL,
+description VARCHAR(255) NOT NULL,
+PRIMARY KEY (name)
+); 
+
+CREATE TABLE IF NOT EXISTS users (
+id INT NOT NULL AUTO_INCREMENT,
+username VARCHAR(255) NOT NULL,
+password VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL,
+steam_username VARCHAR(255) NOT NULL,
+position INT NOT NULL,
+office INT NOT NULL,
+PRIMARY KEY (id),
+CONSTRAINT FK_users_position FOREIGN KEY (position) REFERENCES jobs(id) ON UPDATE CASCADE ON DELETE CASCADE,
+CONSTRAINT FK_users_office FOREIGN KEY (office) REFERENCES offices(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS friend_request (
+    id INT AUTO_INCREMENT,
+    user_1 INT NOT NULL,
+    user_2 INT NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_friend_requests FOREIGN KEY (user_1) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS private_messages (
+    id INT AUTO_INCREMENT,
+    content VARCHAR(255) NOT NULL,
+    timestamp TIMESTAMP NOT NULL,
+    sender INT NOT NULL,
+    receiver INT NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_private_messages_sender FOREIGN KEY (sender) REFERENCES users(id),
+    CONSTRAINT FK_private_messages_receiver FOREIGN KEY (receiver) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS posts (
+    id INT AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    content VARCHAR(255) NOT NULL,
+    creator INT NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_posts_creator FOREIGN KEY (creator) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS likes (
+	id INT AUTO_INCREMENT,
+    user_liked INT NOT NULL,
+    post_liked INT NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_likes_user FOREIGN KEY (user_liked) REFERENCES users(id),
+    CONSTRAINT FK_likes_post FOREIGN KEY (post_liked) REFERENCES posts(id)
+);
+
+CREATE TABLE IF NOT EXISTS comments (
+	id INT AUTO_INCREMENT,
+    content VARCHAR(255) NOT NULL,
+    comment_by INT NOT NULL,
+    in_post INT NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_comments_user FOREIGN KEY (comment_by) REFERENCES users(id),
+	CONSTRAINT FK_comments_post FOREIGN KEY (in_post) REFERENCES posts(id)
+);
+
+CREATE TABLE IF NOT EXISTS social (
+	id INT AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    theme VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_social_category FOREIGN KEY (category) REFERENCES categories(name)
+);
+
+CREATE TABLE IF NOT EXISTS games (
+	id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    playtime INT NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_games_category FOREIGN KEY (category) REFERENCES categories(name)
+);
+
+CREATE TABLE IF NOT EXISTS activities (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    activity_type VARCHAR(255) NOT NULL,
+    category_FK VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_activities_categories FOREIGN KEY (category_FK) REFERENCES categories(Name)
+);
+
+CREATE TABLE IF NOT EXISTS parties(
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    description VARCHAR(255) DEFAULT NULL,
+    game INT NOT NULL,
+    creator INT NOT NULL,
+    category VARCHAR(255) NOT NULL,
+	PRIMARY KEY (id),
+    CONSTRAINT FK_parties_game FOREIGN KEY (game) REFERENCES games(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_parties_creator FOREIGN KEY (creator) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_parties_categories FOREIGN KEY (category) REFERENCES categories(name) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS party_memberlist(
+    id INT NOT NULL AUTO_INCREMENT,
+    user INT NOT NULL,
+    party INT NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_party_members_user FOREIGN KEY (user) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_party_members_party FOREIGN KEY (party) REFERENCES parties(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS messages(
+    id INT NOT NULL AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL,
+    time_sent DATETIME DEFAULT CURRENT_TIMESTAMP,
+    sender INT NOT NULL,
+    party INT NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_messages_sender FOREIGN KEY (sender) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_messages_party FOREIGN KEY (party) REFERENCES parties(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
