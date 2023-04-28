@@ -6,6 +6,18 @@
 <p align="center">
     <img src="https://user-images.githubusercontent.com/89463715/235101324-59f79778-0a1c-4329-bfc8-7ea5e361271a.png" width="401">
 </p>
+
+![Badge en Desarollo](https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green)
+![Release Data](https://img.shields.io/badge/Release%20Data-may%2031-green)
+
+
+
+![MIT](https://img.shields.io/badge/license-MIT-blue)
+![Java](https://img.shields.io/badge/Java-v1.8-blue)
+![Angular](https://img.shields.io/badge/Angular-blue)
+![Railway](https://img.shields.io/badge/Railway%20MySQL-Database-blue)
+
+
     
 ## Table of Contents
 1. [Brief Description](#brief-description)
