@@ -1,6 +1,7 @@
 # T-HUB App - Backend 
 
-
+![BigTLogo](https://user-images.githubusercontent.com/89463715/235101307-15c79695-86ae-4e2c-9740-57d165e11fae.png)
+![THUBLOGO](https://user-images.githubusercontent.com/89463715/235101324-59f79778-0a1c-4329-bfc8-7ea5e361271a.png)
 
 ## Table of Contents
 1. [Brief Description](#brief-description)
