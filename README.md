@@ -91,7 +91,9 @@ T-Hub is an LFG-type application directed only to T-Systems employees with the a
 
 ## Project Development Team
 
-Project made by 4GatoSoft. 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/58307741/235126947-ea7ea55c-91cd-43ed-b746-98654a7b2aa6.png" width="401">
+</p>
 
 Development team composed of the following members:
 
