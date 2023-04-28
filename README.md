@@ -17,32 +17,32 @@ T-Hub is an LFG-type application directed only to T-Systems employees with the a
 
 ## Basics Functional Requirement
 
-- [x] The users must be able to register to the application, establish a user/password.
-- [x] The users have to authenticate themselves login in the application.
-- [x] The users must be able to create Parties (grups) for a determined videogame.
-- [x] The users must be able to close Parties by selecting a videogame.
-- [x] The users can enter and select from a Party.
-- [x] The users must be able to send messages to the Party. These missatges must Being able to be edited and erased by its creator user.
-- [x] The missatges that exist in a Party must be visualized with a common chat.
-- [x] Users can enter and modify the profile data.
-- [x] The users must be able to log out of the web application.
+- [x] The users must be able to register to the application, establishing their username and password.
+- [x] The users must be able to authenticate themselves and login the application.
+- [x] The users must be able to create Parties (groups) for a determined category.
+- [x] The users must be able to delete their own Parties.
+- [x] The users must be able to join and leave created Parties.
+- [x] The users must be able to send messages to the Party. These messages must be able to be deleted or modified by the sender.
+- [x] The messages that exist in a Party must be visualized with a common chat.
+- [x] Users can enter and modify their profile data.
+- [x] The users must be able to log out of the application.
 
 ## Extra Functionalities
 
-1. T-System España employees will have their corporate profile with access to the platform where they will indicate their workplace and office.
+1. T-System employees will have their own corporate profile with access to the platform where they will be able to indicate their workplace office and job title.
 2. On the main screen they will have a common feed where they can create posts, share their thoughts with the entire community, comment, and react to comments from colleagues.
 3. They will have the possibility to create a more intimate circle of friendship by sending and accepting friend requests from other colleagues.
-4. In addition to the common chat, on T-Hub users will have the possibility of creating parties of 3 different categories:
+4. In addition to the private chats, on T-Hub users will have the possibility of creating parties of 3 different categories:
     - Games: Users can create game groups where they can chat and organize parties for a specific game.
     - Activities: Users can create groups for outdoor activities such as cultural visits, bike rides, soccer matches, etc. In this category, there will be the possibility of accessing corporate platforms for managing hotel reservations, flight search engines and travel offers.
     - Social: Users can create groups where they can chat about specific topics like reading groups, memes, offtopic, etc. In this category, there will be the possibility of accessing the corporate book lending platform and company canteen reservation.
-5. To access the groups, users can use a search engine and if the desired group does not exist, they can create their own group.
+5. To access the parties, users can use a search engine and if the desired group does not exist, they can create their own group.
 
 
 ## Technical Requirement
 
 1. Include a Java/Spring Boot backend.
-2. Everything should be stored in Railway Database tables.
+2. Everything should be stored in Railway MySQL Database.
 3. Include authentication with Spring Security.
 4. Include unit and integration tests.
 5. Include robust error handling.
@@ -73,6 +73,10 @@ T-Hub is an LFG-type application directed only to T-Systems employees with the a
 4. Adequate and complete documentation in the README.md file.
 
 ## Project Development Team
+
+Project made by 4GatoSoft. 
+
+Development team composed of the following members:
 
   - [Paula Martins de Sousa](https://github.com/PaulaSousa2014)
 
