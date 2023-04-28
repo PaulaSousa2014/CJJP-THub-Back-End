@@ -13,7 +13,7 @@
 
 
 ![MIT](https://img.shields.io/badge/License-MIT-blue)
-![Java](https://img.shields.io/badge/Java-v1.8-blue)
+![Java](https://img.shields.io/badge/Java-v8-blue)
 ![SpringBoot](https://img.shields.io/badge/SpringBoot-3.0.5-blue)
 ![Railway](https://img.shields.io/badge/Railway%20MySQL-Database-blue)
 
