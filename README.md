@@ -12,9 +12,9 @@
 
 
 
-![MIT](https://img.shields.io/badge/license-MIT-blue)
+![MIT](https://img.shields.io/badge/License-MIT-blue)
 ![Java](https://img.shields.io/badge/Java-v1.8-blue)
-![Angular](https://img.shields.io/badge/Angular-blue)
+![Angular](https://img.shields.io/badge/Angular-Framework-blue)
 ![Railway](https://img.shields.io/badge/Railway%20MySQL-Database-blue)
 
 
