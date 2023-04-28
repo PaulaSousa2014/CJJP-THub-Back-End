@@ -1,8 +1,12 @@
 # T-HUB App - Backend 
 
-<img src="https://user-images.githubusercontent.com/89463715/235101307-15c79695-86ae-4e2c-9740-57d165e11fae.png" width="400" align="center">
-<img src="https://user-images.githubusercontent.com/89463715/235101324-59f79778-0a1c-4329-bfc8-7ea5e361271a.png" width="200" align="center">
-
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/89463715/235101307-15c79695-86ae-4e2c-9740-57d165e11fae.png" width="200">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+</p>
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/89463715/235101324-59f79778-0a1c-4329-bfc8-7ea5e361271a.png" width="401">
+</p>
+    
 ## Table of Contents
 1. [Brief Description](#brief-description)
 2. [Basics Functional Requirement](#basics-functional-requirement)
