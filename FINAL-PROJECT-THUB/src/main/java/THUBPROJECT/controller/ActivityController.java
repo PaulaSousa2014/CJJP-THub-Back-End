@@ -19,8 +19,8 @@ public class ActivityController {
 
 		// Get Mappings
 		@GetMapping("/activitys")
-		public List<Activity> listActivitys() {
-			return activityService.listActivitys();
+		public List<Activity> listActivities() {
+			return activityService.listActivities();
 		}
 
 		@GetMapping("/activitys/{id}")

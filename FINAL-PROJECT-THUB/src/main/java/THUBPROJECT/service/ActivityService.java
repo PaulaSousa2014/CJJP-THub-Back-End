@@ -16,7 +16,7 @@ public class ActivityService {
 	ActivityDAO activityDAO;
 
 	// CRUD functions
-	public List<Activity> listActivitys() {
+	public List<Activity> listActivities() {
 		return activityDAO.findAll();
 	}
 
