@@ -29,8 +29,16 @@ public class Party {
 
 	private User creator;
 
+	@ManyToOne
+	@JoinColumn(name="activity")
 	private Activity activity;
+	
+	@ManyToOne
+	@JoinColumn(name="game")
 	private Game game;
+	
+	@ManyToOne
+	@JoinColumn(name="social")
 	private Social social;
 
 	@OneToMany(mappedBy = ("Message"))
