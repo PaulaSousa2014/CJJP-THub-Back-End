@@ -17,8 +17,7 @@ public class User {
 		PRIMARY KEY (id),
 		CONSTRAINT FK_users_position FOREIGN KEY (position) REFERENCES jobs(id) ON UPDATE CASCADE ON DELETE CASCADE,
 		CONSTRAINT FK_users_office FOREIGN KEY (office) REFERENCES offices(id) ON UPDATE CASCADE ON DELETE CASCADE
-		);
-	 */
+		); */
 	
 	// Attributes
 	@Id
