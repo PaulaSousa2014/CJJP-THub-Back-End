@@ -41,7 +41,7 @@ public class ActivityController {
 		// Put Mappings
 		@PutMapping("/activitys/{id}")
 		public Activity updateActivity(@PathVariable(name = "id") Long id, @RequestBody Activity activity) {
-			Activity selectedActivity = new Activity(id, activity.getTitle(), activity.getDescription(), activity.getActivityType());
+			Activity selectedActivity = new Activity(id, activity.getTitle(), activity.getDescription(), activity.getActivity_type());
 			Activity updatedActivity = new Activity();
 
 			updatedActivity = activityService.updateActivity(selectedActivity);
