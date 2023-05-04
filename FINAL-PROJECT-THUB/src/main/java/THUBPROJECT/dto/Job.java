@@ -3,8 +3,6 @@
  */
 package THUBPROJECT.dto;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -16,29 +14,29 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "offices")
-public class Office {
+@Table(name = "jobs")
+public class Job {
 
 	// Attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	private String name;
-	
-	private String location;
 
-	@OneToMany(mappedBy=("User"))
+	private String title;
+
+	private String description;
+
+	@OneToMany(mappedBy = ("User"))
 	private List<User> users;
 
 	// Constructors
-	public Office() {
+	public Job() {
 	}
 
-	public Office(Long id, String name, String location) {
+	public Job(Long id, String title, String description) {
 		this.id = id;
-		this.name = name;
-		this.location = location;
+		this.title = title;
+		this.description = description;
 	}
 
 	// Getters
@@ -46,12 +44,12 @@ public class Office {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public String getLocation() {
-		return location;
+	public String getDescription() {
+		return description;
 	}
 
 	@JsonIgnore
@@ -65,16 +63,16 @@ public class Office {
 		this.id = id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-	
+
 }
