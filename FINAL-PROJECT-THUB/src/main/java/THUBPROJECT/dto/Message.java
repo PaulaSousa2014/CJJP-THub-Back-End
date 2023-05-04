@@ -17,6 +17,17 @@ import jakarta.persistence.TemporalType;
 @Table(name = "messages")
 public class Message {
 	
+	/*CREATE TABLE IF NOT EXISTS messages (
+    id INT NOT NULL AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL,
+    time_sent DATETIME DEFAULT CURRENT_TIMESTAMP,
+    sender INT NOT NULL,
+    party INT NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_messages_sender FOREIGN KEY (sender) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_messages_party FOREIGN KEY (party) REFERENCES parties(id) ON UPDATE CASCADE ON DELETE CASCADE
+);*/
+	
 	// Attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +39,13 @@ public class Message {
 	@Column(name = "time_sent")
 	private LocalDateTime timeSent;
 	
-	private int sender;
+	private User sender;
 	
-	private int party;
+	private Party party;
 	
 	//Constructors
 
-	public Message(Long id, String content, LocalDateTime timeSent, int sender, int party) {
+	public Message(Long id, String content, LocalDateTime timeSent, User sender, Party party) {
 		this.id = id;
 		this.content = content;
 		this.timeSent = timeSent;
@@ -60,11 +71,11 @@ public class Message {
 		return timeSent;
 	}
 
-	public int getSender() {
+	public User getSender() {
 		return sender;
 	}
 
-	public int getParty() {
+	public Party getParty() {
 		return party;
 	}
 	
@@ -82,11 +93,11 @@ public class Message {
 		this.timeSent = timeSent;
 	}
 
-	public void setSender(int sender) {
+	public void setSender(User sender) {
 		this.sender = sender;
 	}
 
-	public void setParty(int party) {
+	public void setParty(Party party) {
 		this.party = party;
 	}
 	
@@ -96,16 +107,7 @@ public class Message {
 	
 	
 	
-	/*CREATE TABLE IF NOT EXISTS messages (
-    id INT NOT NULL AUTO_INCREMENT,
-    content VARCHAR(300) NOT NULL,
-    time_sent DATETIME DEFAULT CURRENT_TIMESTAMP,
-    sender INT NOT NULL,
-    party INT NOT NULL,
-    PRIMARY KEY (id),
-    CONSTRAINT FK_messages_sender FOREIGN KEY (sender) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT FK_messages_party FOREIGN KEY (party) REFERENCES parties(id) ON UPDATE CASCADE ON DELETE CASCADE
-);*/
+
 
 	
 	
