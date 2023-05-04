@@ -46,7 +46,6 @@ public class Message {
 	private Party party;
 
 	// Constructors
-
 	public Message(Long id, String content, LocalDateTime timeSent, User sender, Party party) {
 		this.id = id;
 		this.content = content;

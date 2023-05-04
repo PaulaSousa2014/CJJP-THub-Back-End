@@ -6,17 +6,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="private_messages")
 public class PrivMessage {
-
-	/*	CREATE TABLE IF NOT EXISTS private_messages (
-    		id INT AUTO_INCREMENT,
-    		content VARCHAR(255) NOT NULL,
-    		timestamp TIMESTAMP NOT NULL,
-    		sender INT NOT NULL,
-    		receiver INT NOT NULL,
-    		PRIMARY KEY (id),
-    		CONSTRAINT FK_private_messages_sender FOREIGN KEY (sender) REFERENCES users(id),
-    		CONSTRAINT FK_private_messages_receiver FOREIGN KEY (receiver) REFERENCES users(id)
-    	); */
 	
 	// Attributes
 	@Id
@@ -31,6 +20,8 @@ public class PrivMessage {
 	@ManyToOne
 	@JoinColumn(name = "sender")
 	private User sender;
+	
+	@ManyToOne
 	@JoinColumn(name = "receiver")
 	private User receiver;
 	

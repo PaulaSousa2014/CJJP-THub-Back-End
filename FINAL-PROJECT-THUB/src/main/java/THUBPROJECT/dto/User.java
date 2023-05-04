@@ -33,28 +33,28 @@ public class User {
 	@JoinColumn(name = "office")
 	private Office office;
 
-	@OneToMany(mappedBy = ("Party"))
+	@OneToMany(mappedBy = ("creator"))
 	private List<Party> party;
 
-	@OneToMany(mappedBy = ("PartyMemberList"))
+	@OneToMany(mappedBy = ("user"))
 	private List<PartyMemberList> party_member;
 
-	@OneToMany(mappedBy = ("Message"))
+	@OneToMany(mappedBy = ("sender"))
 	private List<Message> message;
 
-	@OneToMany(mappedBy = ("Post"))
+	@OneToMany(mappedBy = ("creator"))
 	private List<Post> posts;
 
-	@OneToMany(mappedBy = ("Like"))
+	@OneToMany(mappedBy = ("user_liked"))
 	private List<Like> likes;
 
-	@OneToMany(mappedBy = ("Comment"))
+	@OneToMany(mappedBy = ("comment_by"))
 	private List<Comment> comments;
 
-	@OneToMany(mappedBy = ("Friend"))
+	@OneToMany(mappedBy = ("user1"))
 	private List<Friend> friends;
 
-	@OneToMany(mappedBy = ("PrivMessage"))
+	@OneToMany(mappedBy = ("sender"))
 	private List<PrivMessage> privMessages;
 
 	// Join with table user_roles

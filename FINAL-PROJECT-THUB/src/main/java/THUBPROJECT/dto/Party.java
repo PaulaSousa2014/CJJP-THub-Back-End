@@ -41,10 +41,10 @@ public class Party {
 	@JoinColumn(name="social")
 	private Social social;
 
-	@OneToMany(mappedBy = ("Message"))
+	@OneToMany(mappedBy = ("party"))
 	private List<Message> messages;
 
-	@OneToMany(mappedBy = ("PartyMemberList"))
+	@OneToMany(mappedBy = ("party"))
 	private List<PartyMemberList> partyMemberLists;
 
 	// Constructors
