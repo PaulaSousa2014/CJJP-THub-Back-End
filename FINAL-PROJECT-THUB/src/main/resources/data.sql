@@ -12,7 +12,6 @@ DROP TABLE IF EXISTS friend_requests;
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS jobs;
 DROP TABLE IF EXISTS offices;
 
@@ -29,12 +28,6 @@ title VARCHAR(255) NOT NULL,
 description VARCHAR(255) DEFAULT NULL,
 PRIMARY KEY (id)
 );
-
-CREATE TABLE IF NOT EXISTS categories (
-id INT NOT NULL AUTO_INCREMENT, 
-name VARCHAR(255) NOT NULL,
-PRIMARY KEY (id)
-); 
 
 CREATE TABLE IF NOT EXISTS roles (
 id INT NOT NULL AUTO_INCREMENT,
@@ -116,9 +109,7 @@ CREATE TABLE IF NOT EXISTS socials (
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     theme VARCHAR(255) NOT NULL,
-    category INT NOT NULL,
-    PRIMARY KEY (id),
-    CONSTRAINT FK_social_category FOREIGN KEY (category) REFERENCES categories(id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS games (
@@ -126,9 +117,7 @@ CREATE TABLE IF NOT EXISTS games (
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     playtime INT NOT NULL,
-    category INT NOT NULL,
-    PRIMARY KEY (id),
-    CONSTRAINT FK_games_category FOREIGN KEY (category) REFERENCES categories(id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS activities (
@@ -136,9 +125,7 @@ CREATE TABLE IF NOT EXISTS activities (
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     activity_type VARCHAR(255) NOT NULL,
-    category INT NOT NULL,
-    PRIMARY KEY (id),
-    CONSTRAINT FK_activities_categories FOREIGN KEY (category) REFERENCES categories(id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS parties (
@@ -146,14 +133,12 @@ CREATE TABLE IF NOT EXISTS parties (
     title VARCHAR(100) NOT NULL,
     description VARCHAR(255) DEFAULT NULL,
     creator INT NOT NULL,
-    category INT NOT NULL,
     activity INT DEFAULT NULL, 
     social INT DEFAULT NULL, 
     game INT DEFAULT NULL,
 	PRIMARY KEY (id),
     CONSTRAINT FK_parties_game FOREIGN KEY (game) REFERENCES games(id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_parties_creator FOREIGN KEY (creator) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT FK_parties_categories FOREIGN KEY (category) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_parties_activity FOREIGN KEY (activity) REFERENCES activities(id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_parties_social FOREIGN KEY (social) REFERENCES socials(id) ON UPDATE CASCADE ON DELETE CASCADE
 
