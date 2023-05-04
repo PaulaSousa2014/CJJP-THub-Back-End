@@ -43,7 +43,37 @@ public class Comment {
 	}
 
 	// Getters
+	public Long getId() {
+		return id;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public User getComment_by() {
+		return comment_by;
+	}
+
+	public Post getIn_post() {
+		return in_post;
+	}
 
 	// Setters
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public void setComment_by(User comment_by) {
+		this.comment_by = comment_by;
+	}
+
+	public void setIn_post(Post in_post) {
+		this.in_post = in_post;
+	}
 
 }
