@@ -6,22 +6,11 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import TA27_E4.dto.Role;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
-
-	/*
-	 * CREATE TABLE IF NOT EXISTS users ( id INT NOT NULL AUTO_INCREMENT, username
-	 * VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT
-	 * NULL, steam_username VARCHAR(255) NOT NULL, position INT NOT NULL, office INT
-	 * NOT NULL, PRIMARY KEY (id), CONSTRAINT FK_users_position FOREIGN KEY
-	 * (position) REFERENCES jobs(id) ON UPDATE CASCADE ON DELETE CASCADE,
-	 * CONSTRAINT FK_users_office FOREIGN KEY (office) REFERENCES offices(id) ON
-	 * UPDATE CASCADE ON DELETE CASCADE );
-	 */
 
 	// Attributes
 	@Id
@@ -36,36 +25,36 @@ public class User {
 	@Column(name = "steam_username")
 	private String steam_username;
 
-	@OneToMany(mappedBy=("Party"))
-	private List<Party> party;
-
-	@OneToMany(mappedBy=("PartyMemberList"))
-	private List<PartyMemberList> party_member;
-
-	@OneToMany(mappedBy=("Message"))
-	private List<Message> message;
-
 	@ManyToOne
-	@JoinColumn(name ="office")
-	private Office office;
-
-	@ManyToOne
-	@JoinColumn(name="job")
+	@JoinColumn(name = "position")
 	private Job job;
 
-	@OneToMany(mappedBy=("Post"))
+	@ManyToOne
+	@JoinColumn(name = "office")
+	private Office office;
+
+	@OneToMany(mappedBy = ("Party"))
+	private List<Party> party;
+
+	@OneToMany(mappedBy = ("PartyMemberList"))
+	private List<PartyMemberList> party_member;
+
+	@OneToMany(mappedBy = ("Message"))
+	private List<Message> message;
+
+	@OneToMany(mappedBy = ("Post"))
 	private List<Post> posts;
 
-	@OneToMany(mappedBy=("Like"))
+	@OneToMany(mappedBy = ("Like"))
 	private List<Like> likes;
 
-	@OneToMany(mappedBy=("Comment"))
+	@OneToMany(mappedBy = ("Comment"))
 	private List<Comment> comments;
 
-	@OneToMany(mappedBy=("Friend"))
+	@OneToMany(mappedBy = ("Friend"))
 	private List<Friend> friends;
 
-	@OneToMany(mappedBy=("PrivMessage"))
+	@OneToMany(mappedBy = ("PrivMessage"))
 	private List<PrivMessage> privMessages;
 
 	// Join with table user_roles
@@ -77,14 +66,17 @@ public class User {
 	public User() {
 	}
 
-	public User(Long id, String username, String password, String email, String steam_username) {
+	public User(Long id, String username, String password, String email, String steam_username, Job job,
+			Office office) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.steam_username = steam_username;
+		this.job = job;
+		this.office = office;
 	}
-	
+
 	// Getters
 	public Long getId() {
 		return id;
@@ -231,5 +223,4 @@ public class User {
 		this.roles = roles;
 	}
 
-	
 }

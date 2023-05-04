@@ -41,7 +41,7 @@ public class UserController {
 	@PutMapping("/users/{id}")
 	public User updateUser(@PathVariable(name = "id") Long id, @RequestBody User user) {
 		User selectedUser = new User(id, user.getUsername(), user.getPassword(), user.getEmail(),
-				user.getSteam_username());
+				user.getSteam_username(), user.getJob(), user.getOffice());
 		User updatedUser = new User();
 
 		updatedUser = userService.updateUser(selectedUser);

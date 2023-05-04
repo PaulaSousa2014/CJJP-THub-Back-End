@@ -27,9 +27,11 @@ public class PrivMessage {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "timestamp")
 	private LocalDateTime timestamp;
-	@Column(name = "sender")
+	
+	@ManyToOne
+	@JoinColumn(name = "sender")
 	private User sender;
-	@Column(name = "receiver")
+	@JoinColumn(name = "receiver")
 	private User receiver;
 	
 	// Constructors

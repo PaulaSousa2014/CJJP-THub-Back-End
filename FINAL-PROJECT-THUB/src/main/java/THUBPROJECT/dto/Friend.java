@@ -6,21 +6,17 @@ import jakarta.persistence.*;
 @Table(name = "friend_requests")
 public class Friend {
 	
-	/*	CREATE TABLE IF NOT EXISTS friend_requests (
-    		id INT AUTO_INCREMENT,
-    		user_1 INT NOT NULL,
-    		user_2 INT NOT NULL,
-    		PRIMARY KEY (id),
-    		CONSTRAINT FK_friend_requests FOREIGN KEY (user_1) REFERENCES users(id)
-		);*/
-	
 	// Attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="user_1")
+	
+	@ManyToOne
+	@JoinColumn(name="user_1")
 	private User user1;
-	@Column(name="user_2")
+	
+	@ManyToOne
+	@JoinColumn(name="user_2")
 	private User user2;
 	
 	// Constructors
