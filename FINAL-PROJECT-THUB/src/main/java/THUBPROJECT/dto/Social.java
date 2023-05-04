@@ -1,6 +1,9 @@
 package THUBPROJECT.dto;
 
-import jakarta.persistence.Column;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,18 +15,18 @@ public class Social {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name="title")
+	@Column(name = "title")
 	private String title;
 
-	@Column(name="description")
+	@Column(name = "description")
 	private String description;
 
-	@Column(name="theme")
-	private String theme; 
+	@Column(name = "theme")
+	private String theme;
 
-	/*the relationship parties is still missing*/
+	@OneToMany(mappedBy = ("Party"))
+	private List<Party> parties;
 
-	
 	// Constructors
 	public Social() {
 	}
@@ -54,6 +57,12 @@ public class Social {
 	 */
 	public String getTitle() {
 		return title;
+	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Party")
+	public List<Party> getParties() {
+		return parties;
 	}
 
 	/**
@@ -91,5 +100,8 @@ public class Social {
 		this.theme = theme;
 	}
 
+	public void setParties(List<Party> parties) {
+		this.parties = parties;
+	}
 
 }
