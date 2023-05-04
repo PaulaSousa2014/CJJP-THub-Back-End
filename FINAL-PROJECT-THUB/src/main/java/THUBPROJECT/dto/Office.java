@@ -28,7 +28,7 @@ public class Office {
 	
 	private String location;
 
-	@OneToMany(mappedBy=("User"))
+	@OneToMany(mappedBy=("office"))
 	private List<User> users;
 
 	// Constructors

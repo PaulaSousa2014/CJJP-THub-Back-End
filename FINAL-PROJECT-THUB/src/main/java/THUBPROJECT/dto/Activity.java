@@ -24,7 +24,7 @@ public class Activity {
 	@Column(name = "activity_type")
 	private String activity_type;
 
-	@OneToMany(mappedBy = ("Party"))
+	@OneToMany(mappedBy = ("activity"))
 	private List<Party> parties;
 
 	public Activity() {

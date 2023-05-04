@@ -28,7 +28,7 @@ public class Job {
 
 	private String description;
 
-	@OneToMany(mappedBy = ("User"))
+	@OneToMany(mappedBy = ("job"))
 	private List<User> users;
 
 	// Constructors

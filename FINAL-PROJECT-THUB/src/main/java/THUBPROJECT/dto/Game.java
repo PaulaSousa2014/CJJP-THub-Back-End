@@ -24,7 +24,7 @@ public class Game {
 	@Column(name = "playtime")
 	private int playtime;
 
-	@OneToMany(mappedBy = ("Party"))
+	@OneToMany(mappedBy = ("game"))
 	private List<Party> parties;
 
 	/* the relationship parties is still missing */

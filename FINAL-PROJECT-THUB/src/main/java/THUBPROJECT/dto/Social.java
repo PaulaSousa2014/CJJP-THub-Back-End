@@ -24,7 +24,7 @@ public class Social {
 	@Column(name = "theme")
 	private String theme;
 
-	@OneToMany(mappedBy = ("Party"))
+	@OneToMany(mappedBy = ("social"))
 	private List<Party> parties;
 
 	// Constructors
