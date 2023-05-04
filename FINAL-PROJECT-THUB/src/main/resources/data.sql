@@ -1,16 +1,17 @@
 DROP TABLE IF EXISTS messages;
-DROP TABLE IF EXISTS party_memberlist;
+DROP TABLE IF EXISTS party_memberlists;
 DROP TABLE IF EXISTS parties;
 DROP TABLE IF EXISTS activities;
 DROP TABLE IF EXISTS games;
-DROP TABLE IF EXISTS social;
+DROP TABLE IF EXISTS socials;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS likes;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS private_messages;
-DROP TABLE IF EXISTS friend_request;
-DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS friend_requests;
+DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS jobs;
 DROP TABLE IF EXISTS offices;
@@ -35,6 +36,12 @@ name VARCHAR(255) NOT NULL,
 PRIMARY KEY (id)
 ); 
 
+CREATE TABLE IF NOT EXISTS roles (
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(255) NOT NULL,
+PRIMARY KEY (id)
+); 
+
 CREATE TABLE IF NOT EXISTS users (
 id INT NOT NULL AUTO_INCREMENT,
 username VARCHAR(255) NOT NULL,
@@ -48,21 +55,16 @@ CONSTRAINT FK_users_position FOREIGN KEY (position) REFERENCES jobs(id) ON UPDAT
 CONSTRAINT FK_users_office FOREIGN KEY (office) REFERENCES offices(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS roles (
-id INT NOT NULL AUTO_INCREMENT,
-name VARCHAR(255) NOT NULL
-PRIMARY KEY (id)
-); 
-
-CREATE TABLE IF NOT EXISTS user_roles{
+CREATE TABLE IF NOT EXISTS user_roles (
     id INT NOT NULL AUTO_INCREMENT,
     user INT NOT NULL, 
     roles INT NOT NULL, 
     PRIMARY KEY (id),
     CONSTRAINT FK_roles_roles FOREIGN KEY (roles) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_user_roles FOREIGN KEY (user) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
-}
-CREATE TABLE IF NOT EXISTS friend_request (
+);
+
+CREATE TABLE IF NOT EXISTS friend_requests (
     id INT AUTO_INCREMENT,
     user_1 INT NOT NULL,
     user_2 INT NOT NULL,
@@ -109,14 +111,14 @@ CREATE TABLE IF NOT EXISTS comments (
 	CONSTRAINT FK_comments_post FOREIGN KEY (in_post) REFERENCES posts(id)
 );
 
-CREATE TABLE IF NOT EXISTS social (
+CREATE TABLE IF NOT EXISTS socials (
 	id INT AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     theme VARCHAR(255) NOT NULL,
-    category VARCHAR(255) NOT NULL,
+    category INT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT FK_social_category FOREIGN KEY (category) REFERENCES categories(name)
+    CONSTRAINT FK_social_category FOREIGN KEY (category) REFERENCES categories(id)
 );
 
 CREATE TABLE IF NOT EXISTS games (
@@ -124,9 +126,9 @@ CREATE TABLE IF NOT EXISTS games (
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     playtime INT NOT NULL,
-    category VARCHAR(255) NOT NULL,
+    category INT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT FK_games_category FOREIGN KEY (category) REFERENCES categories(name)
+    CONSTRAINT FK_games_category FOREIGN KEY (category) REFERENCES categories(id)
 );
 
 CREATE TABLE IF NOT EXISTS activities (
@@ -134,12 +136,12 @@ CREATE TABLE IF NOT EXISTS activities (
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     activity_type VARCHAR(255) NOT NULL,
-    category_FK VARCHAR(255) NOT NULL,
+    category INT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT FK_activities_categories FOREIGN KEY (category_FK) REFERENCES categories(Name)
+    CONSTRAINT FK_activities_categories FOREIGN KEY (category) REFERENCES categories(id)
 );
 
-CREATE TABLE IF NOT EXISTS parties(
+CREATE TABLE IF NOT EXISTS parties (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
     description VARCHAR(255) DEFAULT NULL,
@@ -153,11 +155,11 @@ CREATE TABLE IF NOT EXISTS parties(
     CONSTRAINT FK_parties_creator FOREIGN KEY (creator) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_parties_categories FOREIGN KEY (category) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_parties_activity FOREIGN KEY (activity) REFERENCES activities(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT FK_parties_social FOREIGN KEY (social) REFERENCES social(id) ON UPDATE CASCADE ON DELETE CASCADE
+    CONSTRAINT FK_parties_social FOREIGN KEY (social) REFERENCES socials(id) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
-CREATE TABLE IF NOT EXISTS party_memberlist(
+CREATE TABLE IF NOT EXISTS party_memberlists (
     id INT NOT NULL AUTO_INCREMENT,
     user INT NOT NULL,
     party INT NOT NULL,
@@ -167,7 +169,7 @@ CREATE TABLE IF NOT EXISTS party_memberlist(
 );
 
 
-CREATE TABLE IF NOT EXISTS messages(
+CREATE TABLE IF NOT EXISTS messages (
     id INT NOT NULL AUTO_INCREMENT,
     content VARCHAR(300) NOT NULL,
     time_sent DATETIME DEFAULT CURRENT_TIMESTAMP,
