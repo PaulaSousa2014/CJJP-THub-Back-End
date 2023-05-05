@@ -189,3 +189,10 @@ INSERT INTO user_roles (user, role) VALUES (2, 3);
 INSERT INTO user_roles (user, role) VALUES (3, 3);
 INSERT INTO user_roles (user, role) VALUES (4, 3);
 
+INSERT INTO posts (title, content, creator) VALUES ('I love Cats!', 'Cats are the best thing ever, I swear to god I have over 400 cats adopted already', 2);
+INSERT INTO posts (title, content, creator) VALUES ('Test', 'Testing', 3);
+
+INSERT INTO comments (content, comment_by, in_post) VALUES ('Theyre so cute! :D', 4, 1);
+INSERT INTO comments (content, comment_by, in_post) VALUES ('Meh', 1, 1);
+
+INSERT INTO likes (user_liked, post_liked) VALUES (4, 1);
