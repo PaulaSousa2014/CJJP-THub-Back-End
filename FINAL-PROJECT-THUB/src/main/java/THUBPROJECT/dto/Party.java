@@ -26,7 +26,9 @@ public class Party {
 	private String title;
 
 	private String description;
-
+	
+	@ManyToOne
+	@JoinColumn(name="creator")
 	private User creator;
 
 	@ManyToOne
