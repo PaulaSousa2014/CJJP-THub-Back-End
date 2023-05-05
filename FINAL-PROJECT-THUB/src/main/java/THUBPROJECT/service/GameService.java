@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.GameDAO;
 import THUBPROJECT.dto.Game;
+import THUBPROJECT.dto.Party;
 
 @Service // Assign Service
 public class GameService {
@@ -19,6 +20,8 @@ public class GameService {
 	public List<Game> listGames() {
 		return gameDAO.findAll();
 	}
+	
+
 
 	public Game saveGame(Game game) {
 		return gameDAO.save(game);

@@ -7,7 +7,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import THUBPROJECT.dto.Game;
+import THUBPROJECT.dto.Party;
 import THUBPROJECT.service.GameService;
+import THUBPROJECT.service.PartyService;
 
 @RestController // Rest controller
 @RequestMapping("/api")
@@ -16,6 +18,9 @@ public class GameController {
 	// Implement service
 		@Autowired
 		GameService gameService;
+		
+		@Autowired
+		PartyService partyService;
 
 		// Get Mappings
 		@PreAuthorize("hasRole('USER')")
@@ -33,6 +38,7 @@ public class GameController {
 
 			return gamexID;
 		}
+		
 
 		// Post Mappings
 		@PreAuthorize("hasRole('USER')")

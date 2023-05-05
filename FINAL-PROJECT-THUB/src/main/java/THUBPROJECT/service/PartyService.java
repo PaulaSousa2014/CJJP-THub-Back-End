@@ -19,9 +19,19 @@ public class PartyService {
 		public List<Party> listParties() {
 			return partyDAO.findAll();
 		}
+		
+
 
 		public List<Party> listPartiesByGameId(Long gameId) {
 			return partyDAO.findPartiesByGameId(gameId);
+		}
+		
+		public List<Party> findPartiesByActivityId(Long activityId){
+			return partyDAO.findPartiesByActivityId(activityId);
+		}
+		
+		public List<Party> findPartiesBySocialId(Long socialId){
+			return partyDAO.findPartiesBySocialId(socialId);
 		}
 
 		public Party saveParty(Party party) {

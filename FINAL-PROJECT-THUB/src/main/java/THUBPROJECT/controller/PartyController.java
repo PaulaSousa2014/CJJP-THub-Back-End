@@ -30,6 +30,8 @@ public class PartyController {
 	public List<Party> listParties() {
 		return partyService.listParties();
 	}
+	
+	
 
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/{id}")
@@ -45,6 +47,18 @@ public class PartyController {
 	@GetMapping("/parties/game/{gameId}")
 	public List<Party> listPartiesByGameId(@PathVariable(name = "gameId") Long gameId) {
 		return partyService.listPartiesByGameId(gameId);
+	}
+	
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/parties/activity/{activityId}")
+	public List<Party> findPartiesByActivityId(@PathVariable(name = "activityId")Long activityId){
+		return partyService.findPartiesByActivityId(activityId);
+	}
+	
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/parties/social/{socialId}")
+	public List<Party> findPartiesBySocialId(@PathVariable(name = "socialId")Long socialId){
+		return partyService.findPartiesBySocialId(socialId);
 	}
 
 	// Post Mappings

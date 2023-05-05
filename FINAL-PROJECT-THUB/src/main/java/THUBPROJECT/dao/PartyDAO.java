@@ -9,5 +9,9 @@ import THUBPROJECT.dto.Party;
 public interface PartyDAO extends JpaRepository<Party, Long> {
 
 	public List<Party> findPartiesByGameId(Long gameId);
+	
+	public List<Party> findPartiesByActivityId(Long activityId);
+	
+	public List<Party> findPartiesBySocialId(Long socialId);
 
 }
