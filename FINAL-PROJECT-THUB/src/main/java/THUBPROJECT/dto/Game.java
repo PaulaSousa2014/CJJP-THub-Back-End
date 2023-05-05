@@ -27,7 +27,6 @@ public class Game {
 	@OneToMany(mappedBy = ("game"))
 	private List<Party> parties;
 
-	/* the relationship parties is still missing */
 
 	// Constructors
 	public Game() {
