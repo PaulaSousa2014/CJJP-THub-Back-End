@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.PostDAO;
 import THUBPROJECT.dto.Post;
+import THUBPROJECT.service.Interfaces.PostServiceInterface;
 
 @Service // Assign Service
-public class PostService {
+public class PostService implements PostServiceInterface{
 
 	// Load DAO
 	@Autowired

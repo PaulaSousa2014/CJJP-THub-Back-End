@@ -7,9 +7,10 @@ import org.springframework.stereotype.*;
 
 import THUBPROJECT.dao.FriendDAO;
 import THUBPROJECT.dto.Friend;
+import THUBPROJECT.service.Interfaces.FriendServiceInterface;
 
 @Service // Assign Service
-public class FriendService {
+public class FriendService implements FriendServiceInterface{
 
 	// Load DAO
 	@Autowired

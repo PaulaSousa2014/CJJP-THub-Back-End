@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.LikeDAO;
 import THUBPROJECT.dto.Like;
+import THUBPROJECT.service.Interfaces.LikeServiceInterface;
 
 @Service // Assign Service
-public class LikeService {
+public class LikeService implements LikeServiceInterface{
 
 	// Load DAO
 	@Autowired

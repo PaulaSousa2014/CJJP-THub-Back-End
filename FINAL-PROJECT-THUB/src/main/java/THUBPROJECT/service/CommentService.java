@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.CommentDAO;
 import THUBPROJECT.dto.Comment;
+import THUBPROJECT.service.Interfaces.CommentServiceInterface;
 
 @Service // Assign Service
-public class CommentService {
+public class CommentService implements CommentServiceInterface{
 
 	// Load DAO
 	@Autowired

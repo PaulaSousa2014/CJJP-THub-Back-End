@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.PartyDAO;
 import THUBPROJECT.dto.Party;
+import THUBPROJECT.service.Interfaces.PartyServiceInterface;
 
 @Service
-public class PartyService {
+public class PartyService implements PartyServiceInterface{
 
 	// Load DAO
 		@Autowired
@@ -20,8 +21,6 @@ public class PartyService {
 			return partyDAO.findAll();
 		}
 		
-
-
 		public List<Party> listPartiesByGameId(Long gameId) {
 			return partyDAO.findPartiesByGameId(gameId);
 		}

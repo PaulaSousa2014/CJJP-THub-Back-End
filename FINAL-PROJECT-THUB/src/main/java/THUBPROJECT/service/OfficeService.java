@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.OfficeDAO;
 import THUBPROJECT.dto.Office;
+import THUBPROJECT.service.Interfaces.OfficeServiceInterface;
 
 @Service // Assign Service
-public class OfficeService {
+public class OfficeService implements OfficeServiceInterface{
 
 	// Load DAO
 	@Autowired

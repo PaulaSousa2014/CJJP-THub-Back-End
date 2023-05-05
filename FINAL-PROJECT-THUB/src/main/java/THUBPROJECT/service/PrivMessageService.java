@@ -5,9 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import THUBPROJECT.dao.PrivMessageDAO;
 import THUBPROJECT.dto.PrivMessage;
+import THUBPROJECT.service.Interfaces.PrivMessageServiceInterface;
 
 @Service // Assign Service
-public class PrivMessageService {
+public class PrivMessageService implements PrivMessageServiceInterface{
 
 	// Load DAO
 	@Autowired
