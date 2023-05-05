@@ -6,6 +6,7 @@ package THUBPROJECT.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,12 +43,14 @@ public class CommentController {
 	}
 
 	// Post Mappings
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/comments")
 	public Comment saveComment(@RequestBody Comment comment) {
 		return commentService.saveComment(comment);
 	}
 
 	// Put Mappings
+	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/comments/{id}")
 	public Comment updateComment(@PathVariable(name = "id") Long id, @RequestBody Comment comment) {
 		Comment selectedComment = new Comment(id, comment.getContent(), comment.getComment_by(), comment.getIn_post());
@@ -58,6 +61,7 @@ public class CommentController {
 	}
 
 	// Delete Mappings
+	@PreAuthorize("hasRole('USER')")
 	@DeleteMapping("/comments/{id}")
 	public void deleteComment(@PathVariable(name = "id") Long id) {
 		commentService.deleteComment(id);

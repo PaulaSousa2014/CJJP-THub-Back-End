@@ -34,7 +34,7 @@ public class JobController {
 		return jobService.listJobs();
 	}
 
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/jobs/{id}")
 	public Job jobById(@PathVariable(name = "id") Long id) {
 		Job jobxID = new Job();
@@ -45,12 +45,13 @@ public class JobController {
 	}
 
 	// Post Mappings
-	@PostMapping("/jobs")
+	@PreAuthorize("hasRole('ADMIN')")
 	public Job saveJob(@RequestBody Job job) {
 		return jobService.saveJob(job);
 	}
 
 	// Put Mappings
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/jobs/{id}")
 	public Job updateJob(@PathVariable(name = "id") Long id, @RequestBody Job job) {
 		Job selectedJob = new Job(id, job.getTitle(), job.getDescription());
@@ -61,6 +62,7 @@ public class JobController {
 	}
 
 	// Delete Mappings
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/jobs/{id}")
 	public void deleteJob(@PathVariable(name = "id") Long id) {
 		jobService.deleteJob(id);

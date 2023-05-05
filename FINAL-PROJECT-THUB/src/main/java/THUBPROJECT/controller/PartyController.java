@@ -3,6 +3,7 @@ package THUBPROJECT.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,11 +25,13 @@ public class PartyController {
 	PartyService partyService;
 
 	// Get Mappings
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties")
 	public List<Party> listParties() {
 		return partyService.listParties();
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/{id}")
 	public Party partyById(@PathVariable(name = "id") Long id) {
 		Party partyxID = new Party();
@@ -38,18 +41,21 @@ public class PartyController {
 		return partyxID;
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/game/{gameId}")
 	public List<Party> listPartiesByGameId(@PathVariable(name = "gameId") Long gameId) {
 		return partyService.listPartiesByGameId(gameId);
 	}
 
 	// Post Mappings
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/parties")
 	public Party saveParty(@RequestBody Party party) {
 		return partyService.saveParty(party);
 	}
 
 	// Put Mappings
+	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/parties/{id}")
 	public Party updateParty(@PathVariable(name = "id") Long id, @RequestBody Party party) {
 		Party selectedParty = new Party(id, party.getTitle(), party.getDescription(), party.getGame(),
@@ -61,6 +67,7 @@ public class PartyController {
 	}
 
 	// Delete Mappings
+	@PreAuthorize("hasRole('USER')")
 	@DeleteMapping("/parties/{id}")
 	public void deleteParty(@PathVariable(name = "id") Long id) {
 		partyService.deleteParty(id);

@@ -3,6 +3,7 @@ package THUBPROJECT.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,11 +24,13 @@ public class PartyMemberListController {
 	PartyMemberListService partyMemberListService;
 
 	// Get Mappings
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/party_members")
 	public List<PartyMemberList> listPartyMemberLists() {
 		return partyMemberListService.listPartyMemberLists();
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/party_members/{id}")
 	public PartyMemberList party_MemberById(@PathVariable(name = "id") Long id) {
 		PartyMemberList party_MemberxID = new PartyMemberList();
@@ -37,23 +40,27 @@ public class PartyMemberListController {
 		return party_MemberxID;
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/party_members/user/{userId}")
 	public List<PartyMemberList> listPartiesByUserId(@PathVariable(name = "userId") Long userId) {
 		return partyMemberListService.listPartiesByUserId(userId);
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/party_members/party/{partyId}")
 	public List<PartyMemberList> listUsersByPartyId(@PathVariable(name = "partyId") Long partyId) {
 		return partyMemberListService.listUsersByPartyId(partyId);
 	}
 
 	// Post Mappings
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/party_members")
 	public PartyMemberList savePartyMemberList(@RequestBody PartyMemberList partyMemberList) {
 		return partyMemberListService.savePartyMemberList(partyMemberList);
 	}
 
 	// Delete Mappings
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/party_members/{id}")
 	public void deletePartyMemberList(@PathVariable(name = "id") Long id) {
 		partyMemberListService.deletePartyMemberList(id);

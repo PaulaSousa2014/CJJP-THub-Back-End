@@ -21,6 +21,13 @@ public class Role {
 	public Role(ERole name) {
 		this.name = name;
 	}
+	
+
+	public Role(Long id, ERole name) {
+
+		this.id = id;
+		this.name = name;
+	}
 
 	// Getters
 	

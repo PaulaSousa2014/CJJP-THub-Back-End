@@ -3,6 +3,7 @@ package THUBPROJECT.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import THUBPROJECT.dto.PrivMessage;
@@ -17,11 +18,13 @@ public class PrivMessageController {
 	PrivMessageService privMessageService;
 
 	// Get Mappings
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/privMessages")
 	public List<PrivMessage> listPrivMessages() {
 		return privMessageService.listprivMessages();
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/privMessages/{id}")
 	public PrivMessage privMessageById(@PathVariable(name = "id") Long id) {
 		PrivMessage privMessagesxID = new PrivMessage();
@@ -30,12 +33,14 @@ public class PrivMessageController {
 	}
 
 	// Post Mappings
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/privMessages")
 	public PrivMessage savePrivMessage(@RequestBody PrivMessage privMessage) {
 		return privMessageService.savePrivMessage(privMessage);
 	}
 
 	// Put Mappings
+	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/privMessages/{id}")
 	public PrivMessage updatePrivMessage(@PathVariable(name = "id") Long id, @RequestBody PrivMessage privMessage) {
 		PrivMessage selectedPrivMessage = new PrivMessage(id, privMessage.getContent(), privMessage.getSender(), privMessage.getReceiver());
@@ -45,6 +50,7 @@ public class PrivMessageController {
 	}
 
 	// Delete Mappings
+	@PreAuthorize("hasRole('USER')")
 	@DeleteMapping("/privMessages/{id}")
 	public void deletePrivMessage(@PathVariable(name = "id") Long id) {
 		privMessageService.deletePrivMessage(id);
