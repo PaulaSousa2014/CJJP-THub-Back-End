@@ -34,10 +34,10 @@ public class User {
 	private Office office;
 
 	@OneToMany(mappedBy = ("creator"))
-	private List<Party> party;
+	private List<Party> parties;
 
 	@OneToMany(mappedBy = ("user"))
-	private List<PartyMemberList> party_member;
+	private List<PartyMemberList> partyMembers;
 
 	@OneToMany(mappedBy = ("sender"))
 	private List<Message> message;
@@ -52,14 +52,20 @@ public class User {
 	private List<Comment> comments;
 
 	@OneToMany(mappedBy = ("user1"))
-	private List<Friend> friends;
+	private List<Friend> reqsSent;
+
+	@OneToMany(mappedBy = ("user2"))
+	private List<Friend> reqsReceived;
 
 	@OneToMany(mappedBy = ("sender"))
-	private List<PrivMessage> privMessages;
+	private List<PrivMessage> msgsSent;
+
+	@OneToMany(mappedBy = ("receiver"))
+	private List<PrivMessage> msgsReceived;
 
 	// Join with table user_roles
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user"), inverseJoinColumns = @JoinColumn(name = "role"))
 	private Set<Role> roles = new HashSet<>();
 
 	// Constructors
@@ -100,14 +106,14 @@ public class User {
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Party")
-	public List<Party> getParty() {
-		return party;
+	public List<Party> getParties() {
+		return parties;
 	}
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "PartyMemberList")
-	public List<PartyMemberList> getParty_member() {
-		return party_member;
+	public List<PartyMemberList> getPartyMembers() {
+		return partyMembers;
 	}
 
 	@JsonIgnore
@@ -144,14 +150,26 @@ public class User {
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Friend")
-	public List<Friend> getFriends() {
-		return friends;
+	public List<Friend> getReqsSent() {
+		return reqsSent;
+	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Friend")
+	public List<Friend> getReqsReceived() {
+		return reqsReceived;
 	}
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "PrivMessage")
-	public List<PrivMessage> getPrivMessages() {
-		return privMessages;
+	public List<PrivMessage> getMsgsSent() {
+		return msgsSent;
+	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "PrivMessage")
+	public List<PrivMessage> getMsgsReceived() {
+		return msgsReceived;
 	}
 
 	public Set<Role> getRoles() {
@@ -178,13 +196,13 @@ public class User {
 	public void setSteam_username(String steam_username) {
 		this.steam_username = steam_username;
 	}
-
-	public void setParty(List<Party> party) {
-		this.party = party;
+	
+	public void setParties(List<Party> parties) {
+		this.parties = parties;
 	}
 
-	public void setParty_member(List<PartyMemberList> party_member) {
-		this.party_member = party_member;
+	public void setPartyMembers(List<PartyMemberList> partyMembers) {
+		this.partyMembers = partyMembers;
 	}
 
 	public void setMessage(List<Message> message) {
@@ -211,16 +229,24 @@ public class User {
 		this.comments = comments;
 	}
 
-	public void setFriends(List<Friend> friends) {
-		this.friends = friends;
-	}
-
-	public void setPrivMessages(List<PrivMessage> privMessages) {
-		this.privMessages = privMessages;
-	}
-
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
 
+	public void setReqsSent(List<Friend> reqsSent) {
+		this.reqsSent = reqsSent;
+	}
+
+	public void setReqsReceived(List<Friend> reqsReceived) {
+		this.reqsReceived = reqsReceived;
+	}
+
+	public void setMsgsSent(List<PrivMessage> msgsSent) {
+		this.msgsSent = msgsSent;
+	}
+
+	public void setMsgsReceived(List<PrivMessage> msgsReceived) {
+		this.msgsReceived = msgsReceived;
+	}
+	
 }

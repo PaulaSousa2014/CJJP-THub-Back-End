@@ -25,7 +25,7 @@ public class UserRole {
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="roles")
+	@JoinColumn(name="role")
 	private Role role;
 	
 	// Contrsuctors
