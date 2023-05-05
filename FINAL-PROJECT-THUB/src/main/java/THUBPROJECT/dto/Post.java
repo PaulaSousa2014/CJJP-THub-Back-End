@@ -34,7 +34,7 @@ public class Post {
 	@JoinColumn(name = "creator")
 	private User creator;
 
-	@OneToMany(mappedBy = ("comment_by"))
+	@OneToMany(mappedBy = ("post_liked"))
 	private List<Like> likes;
 
 	@OneToMany(mappedBy = ("in_post"))
