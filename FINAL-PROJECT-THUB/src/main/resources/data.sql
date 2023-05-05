@@ -167,21 +167,27 @@ CREATE TABLE IF NOT EXISTS messages (
     CONSTRAINT FK_messages_party FOREIGN KEY (party) REFERENCES parties(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO jobs (title, description) VALUES ('Front-End Developer', 'Creative bois');
-INSERT INTO jobs (title, description) VALUES ('Back-End Developer', 'Raging bois');
+INSERT INTO jobs (title, description) VALUES 
+	('Front-End Developer', 'Creative bois'),
+ 	('Back-End Developer', 'Raging bois');
 
-INSERT INTO offices (name, location) VALUES ('REDESA', 'Somewhere in Reus around the cinemas lol');
-INSERT INTO offices (name, location) VALUES ('TSystems', 'Close to the hospital, still being built it seems');
+INSERT INTO offices (name, location) VALUES 
+	('REDESSA', 'Somewhere in Reus around the cinemas lol'),
+	('TSystems', 'Close to the hospital, still being built it seems');
 
-INSERT INTO roles (name) VALUES ('ROLE_USER');
-INSERT INTO roles (name) VALUES ('ROLE_MOD');
-INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
+INSERT INTO roles (name) VALUES 
+	('ROLE_USER'),
+	('ROLE_MOD'),
+	('ROLE_ADMIN');
 
-INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('javier', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'javi@javi.com', 'javisteam', 1, 1);
-INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('camila', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'cami@cami.com', 'camisteam', 1, 1);
-INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('josep', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'jose@jose.com', 'josesteam', 2, 2);
-INSERT INTO users (username, password, email) VALUES ('paula', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'pauli@pauli.com');
-INSERT INTO users (username, password, email) VALUES ('testUser','$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS','testUser@test.com');
+INSERT INTO users (username, password, email, steam_username, position, office) VALUES 
+	('javier', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'javi@javi.com', 'javisteam', 1, 1),
+	('camila', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'cami@cami.com', 'camisteam', 1, 1),
+	('josep', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'jose@jose.com', 'josesteam', 2, 2),
+	('paula', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'pauli@pauli.com', 'paulisteam', 2, 2);
+
+INSERT INTO users (username, password, email) VALUES 	
+	('testUser','$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS','testUser@test.com');
 
 INSERT INTO user_roles (user, role) VALUES 
 	(1, 1), (2, 1), (3, 1),  (4, 1),  (1, 3), (2, 3), (3, 3), (4, 3), (5,1);
