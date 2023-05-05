@@ -12,40 +12,46 @@ public class Friend {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="user_1")
-	private User user1;
+	@JoinColumn(name="sender_request")
+	private User userSender;
 	
 	@ManyToOne
-	@JoinColumn(name="user_2")
-	private User user2;
+	@JoinColumn(name="receiver_request")
+	private User userReciever;
 	
 	// Constructors
 	public Friend() {}
 	
-	public Friend(Long id, User user1, User user2) {
+	public Friend(Long id, User sender_request, User receiver_request) {
 		this.id = id;
-		this.user1 = user1;
-		this.user2 = user2;
-	}
-
-	// Setters and getters
-	public User getUser1() {
-		return user1;
-	}
-
-	public void setUser1(User user1) {
-		this.user1 = user1;
-	}
-
-	public User getUser2() {
-		return user2;
-	}
-
-	public void setUser2(User user2) {
-		this.user2 = user2;
+		this.userSender = sender_request;
+		this.userReciever = receiver_request;
 	}
 
 	public Long getId() {
 		return id;
-	}	
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public User getUserSender() {
+		return userSender;
+	}
+
+	public void setUserSender(User userSender) {
+		this.userSender = userSender;
+	}
+
+	public User getUserReciever() {
+		return userReciever;
+	}
+
+	public void setUserReciever(User userReciever) {
+		this.userReciever = userReciever;
+	}
+
+	// Setters and getters
+	
 }

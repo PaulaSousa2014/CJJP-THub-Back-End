@@ -57,12 +57,14 @@ CREATE TABLE IF NOT EXISTS user_roles (
     CONSTRAINT FK_user_roles FOREIGN KEY (user) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+
 CREATE TABLE IF NOT EXISTS friend_requests (
     id INT AUTO_INCREMENT,
-    user_1 INT NOT NULL,
-    user_2 INT NOT NULL,
+    sender_request INT NOT NULL,
+    receiver_request INT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT FK_friend_requests FOREIGN KEY (user_1) REFERENCES users(id)
+    CONSTRAINT FK_friend_requests_sender FOREIGN KEY (sender_request) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_friend_requests_receiver FOREIGN KEY (receiver_request) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS private_messages (
@@ -188,6 +190,11 @@ INSERT INTO user_roles (user, role) VALUES (1, 3);
 INSERT INTO user_roles (user, role) VALUES (2, 3);
 INSERT INTO user_roles (user, role) VALUES (3, 3);
 INSERT INTO user_roles (user, role) VALUES (4, 3);
+
+INSERT INTO  friend_requests (sender_request, receiver_request) VALUES (1,2);
+INSERT INTO  friend_requests (sender_request, receiver_request) VALUES (2,3);
+INSERT INTO  friend_requests (sender_request, receiver_request) VALUES (3,4);
+INSERT INTO  friend_requests (sender_request, receiver_request) VALUES (4,1);
 
 INSERT INTO posts (title, content, creator) VALUES ('I love Cats!', 'Cats are the best thing ever, I swear to god I have over 400 cats adopted already', 2);
 INSERT INTO posts (title, content, creator) VALUES ('Test', 'Testing', 3);

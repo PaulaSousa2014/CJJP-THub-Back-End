@@ -51,10 +51,10 @@ public class User {
 	@OneToMany(mappedBy = ("comment_by"))
 	private List<Comment> comments;
 
-	@OneToMany(mappedBy = ("user1"))
+	@OneToMany(mappedBy = ("userSender"))
 	private List<Friend> reqsSent;
 
-	@OneToMany(mappedBy = ("user2"))
+	@OneToMany(mappedBy = ("userReciever"))
 	private List<Friend> reqsReceived;
 
 	@OneToMany(mappedBy = ("sender"))

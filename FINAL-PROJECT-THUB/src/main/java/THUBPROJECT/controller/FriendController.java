@@ -38,7 +38,7 @@ public class FriendController {
 	// Put Mappings
 	@PutMapping("/friends/{id}")
 	public Friend updateUser(@PathVariable(name = "id") Long id, @RequestBody Friend friend) {
-		Friend selectedFriend = new Friend(id, friend.getUser1(), friend.getUser2());
+		Friend selectedFriend = new Friend(id, friend.getUserSender(), friend.getUserReciever());
 		Friend updatedFriend = new Friend();
 
 		updatedFriend = friendService.updateFriend(selectedFriend);
