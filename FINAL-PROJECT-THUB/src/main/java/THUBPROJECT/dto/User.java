@@ -13,6 +13,8 @@ import jakarta.persistence.*;
 public class User {
 
 	// Attributes
+	//Add name atribute
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
