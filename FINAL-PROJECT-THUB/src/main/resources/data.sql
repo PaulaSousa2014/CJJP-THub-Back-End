@@ -213,3 +213,9 @@ INSERT INTO socials (title, description, theme) VALUES ('Developers Memes', 'des
 INSERT INTO socials (title, description, theme) VALUES ('Title2', 'description 2', 'Memes');
 INSERT INTO socials (title, description, theme) VALUES ('FAQ', 'description 3', 'FAQ-THub');
 INSERT INTO socials (title, description, theme) VALUES ('Title4', 'description 4', 'Theme4');
+
+INSERT INTO games (title, description, playtime) VALUES ('The Legend of Zelda: Breath of the Wild', 'Action-adventure game developed and published by Nintendo', 240);
+INSERT INTO games (title, description, playtime) VALUES ('Grand Theft Auto V', 'Action-adventure game developed by Rockstar North and published by Rockstar Games', 360);
+INSERT INTO games (title, description, playtime) VALUES ('Minecraft', 'Sandbox video game developed and published by Mojang Studios', 720);
+INSERT INTO games (title, description, playtime) VALUES ('Overwatch', 'First-person shooter game developed and published by Blizzard Entertainment', 180);
+INSERT INTO games (title, description, playtime) VALUES ('The Witcher 3: Wild Hunt', 'Action role-playing game developed and published by CD Projekt', 180);
