@@ -177,10 +177,10 @@ INSERT INTO roles (name) VALUES ('ROLE_USER');
 INSERT INTO roles (name) VALUES ('ROLE_MOD');
 INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
 
-INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('javier', 'javipass', 'javi@javi.com', 'javisteam', 1, 1);
-INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('camila', 'camipass', 'cami@cami.com', 'camisteam', 1, 1);
-INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('josep', 'josepass', 'jose@jose.com', 'josesteam', 2, 2);
-INSERT INTO users (username, password, email) VALUES ('paula', 'paulipass', 'pauli@pauli.com');
+INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('javier', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'javi@javi.com', 'javisteam', 1, 1);
+INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('camila', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'cami@cami.com', 'camisteam', 1, 1);
+INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('josep', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'jose@jose.com', 'josesteam', 2, 2);
+INSERT INTO users (username, password, email) VALUES ('paula', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'pauli@pauli.com');
 
 INSERT INTO user_roles (user, role) VALUES (1, 1);
 INSERT INTO user_roles (user, role) VALUES (2, 1);

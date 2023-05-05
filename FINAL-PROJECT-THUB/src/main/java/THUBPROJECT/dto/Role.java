@@ -18,16 +18,12 @@ public class Role {
 	public Role() {
 	}
 
-	public Role(Long id, ERole name) {
-		this.id = id;
-		this.name = name;
-	}
-
-	// Getters
 	public Role(ERole name) {
 		this.name = name;
 	}
 
+	// Getters
+	
 	public Long getId() {
 		return id;
 	}
