@@ -206,24 +206,59 @@ INSERT INTO posts (title, content, creator) VALUES ('Test', 'Testing', 3);
 
 INSERT INTO likes (user_liked, post_liked) VALUES (4, 1);
 
-INSERT INTO comments (content, comment_by, in_post) VALUES ('Theyre so cute! :D', 4, 1);
-INSERT INTO comments (content, comment_by, in_post) VALUES ('Meh', 1, 1);
+INSERT INTO comments (content, comment_by, in_post) VALUES 
+	('Theyre so cute! :D', 4, 1),
+	('Meh', 1, 1),
+	('Great post!', 3, 1),
+	('I completely agree with you.', 3, 1),
+	('Thanks for sharing this information.', 2, 2),
+	('I found this post really helpful.', 1, 2),
+	('Can you provide more details about this topic?', 2, 1),
+	('I think you missed an important point in your argument.', 3, 2);
 
-INSERT INTO socials (title, description, theme) VALUES ('Developers Memes', 'description 1', 'Memes');
-INSERT INTO socials (title, description, theme) VALUES ('Title2', 'description 2', 'Memes');
-INSERT INTO socials (title, description, theme) VALUES ('FAQ', 'description 3', 'FAQ-THub');
-INSERT INTO socials (title, description, theme) VALUES ('Title4', 'description 4', 'Theme4');
+INSERT INTO socials (title, description, theme) VALUES 
+	('Summer BBQ', 'Join us for a fun-filled afternoon of food and games!', 'Summer'),
+	('Halloween Party', 'Get ready for a spooktacular night of costumes and fun!', 'Halloween'),
+	('Christmas Dinner', 'Celebrate the holiday season with a delicious feast!', 'Christmas'),
+	('New Year''s Eve Bash', 'Ring in the new year with drinks, dancing, and great company!', 'New Year'),
+	('Networking Event', 'Meet new people and expand your professional network!', 'Business'),
+	('Charity Fundraiser', 'Support a good cause and make a difference in your community!', 'Charity');
 
-INSERT INTO games (title, description, playtime) VALUES ('The Legend of Zelda: Breath of the Wild', 'Action-adventure game developed and published by Nintendo', 240);
-INSERT INTO games (title, description, playtime) VALUES ('Grand Theft Auto V', 'Action-adventure game developed by Rockstar North and published by Rockstar Games', 360);
-INSERT INTO games (title, description, playtime) VALUES ('Minecraft', 'Sandbox video game developed and published by Mojang Studios', 720);
-INSERT INTO games (title, description, playtime) VALUES ('Overwatch', 'First-person shooter game developed and published by Blizzard Entertainment', 180);
-INSERT INTO games (title, description, playtime) VALUES ('The Witcher 3: Wild Hunt', 'Action role-playing game developed and published by CD Projekt', 180);
+INSERT INTO games (title, description, playtime) VALUES 
+	('The Legend of Zelda: Breath of the Wild', 'Action-adventure game developed and published by Nintendo', 240),
+	('Grand Theft Auto V', 'Action-adventure game developed by Rockstar North and published by Rockstar Games', 360),
+	('Minecraft', 'Sandbox video game developed and published by Mojang Studios', 720),
+	('Overwatch', 'First-person shooter game developed and published by Blizzard Entertainment', 180),
+	('The Witcher 3: Wild Hunt', 'Action role-playing game developed and published by CD Projekt', 180);
 
-INSERT INTO activities (title, description, activity_type) VALUES ('Yoga Class', 'One-hour Vinyasa Flow yoga class', 'Fitness');
-INSERT INTO activities (title, description, activity_type) VALUES ('Painting Workshop', 'Two-hour painting workshop with acrylic paints', 'Art');
-INSERT INTO activities (title, description, activity_type) VALUES ('Book Club Meeting', 'Monthly book club meeting to discuss "The Great Gatsby"', 'Literature');
-INSERT INTO activities (title, description, activity_type) VALUES ('Hiking Trip', 'Full-day hike in the nearby national park', 'Outdoors');
-INSERT INTO activities (title, description, activity_type) VALUES ('Cooking Class', 'Three-hour cooking class on Italian cuisine', 'Food');
-INSERT INTO activities (title, description, activity_type) VALUES ('Photography Walk', 'Two-hour photography walk in the city', 'Art');
-INSERT INTO activities (title, description, activity_type) VALUES  ('Wine Tasting', 'Two-hour wine tasting event with sommelier', 'Food and Drink');
+
+INSERT INTO activities (title, description, activity_type) VALUES 
+	('Yoga Class', 'One-hour Vinyasa Flow yoga class', 'Fitness'),
+	('Painting Workshop', 'Two-hour painting workshop with acrylic paints', 'Art'),
+	('Book Club Meeting', 'Monthly book club meeting to discuss "The Great Gatsby"', 'Literature'),
+	('Hiking Trip', 'Full-day hike in the nearby national park', 'Outdoors'),
+	('Cooking Class', 'Three-hour cooking class on Italian cuisine', 'Food'),
+	('Photography Walk', 'Two-hour photography walk in the city', 'Art'),
+	('Wine Tasting', 'Two-hour wine tasting event with sommelier', 'Food and Drink');
+
+INSERT INTO parties (title, description, creator, activity, social, game) VALUES 
+	('Sarah\'s Graduation Party', 'Celebrate Sarah\'s graduation from college', 3, NULL, 1, NULL),
+	('Summer BBQ', 'Get together with friends and family for a summer barbecue', 2, NULL, 2, NULL),
+	('Dungeons and Dragons Night', 'Join us for an evening of tabletop gaming', 1, NULL, NULL, 3),
+	('New Year\'s Eve Party', 'Ring in the new year with a party!', 4, NULL, 4, NULL),
+	('Charity 5K Run', 'Participate in a charity 5K run for a good cause', 3, 5, NULL, NULL);
+
+INSERT INTO party_memberlists (user, party) VALUES 
+	(1,5), 	(1,4),	(1,3),	(1,2),	(1,1),	(2,5),	(2,3),	(2,4),	(2,4),	(3,5),	(3,4),	(3,2),	(4,5),
+	(4,4),	(4,1),	(4,2);
+
+INSERT INTO messages (content, sender, party)
+VALUES 
+	('Hi, are you coming to the party tonight?', 1, 3),
+	('Yes, I am!', 2, 3),
+	('Do you need a ride?', 1, 3),
+	('No, thanks. I am driving there myself.', 2, 3),
+	('Hey, did you see the new update on our project?', 3, 5),
+	('No, what is it about?', 4, 5),
+	('It is about the new feature that we are adding to our app.', 3, 5),
+	('That sounds interesting! Let me take a look at it.', 4, 5);
