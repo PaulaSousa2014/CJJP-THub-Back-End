@@ -1,4 +1,4 @@
-# T-Hub App - Backend 
+# T-Hub API
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/89463715/235101307-15c79695-86ae-4e2c-9740-57d165e11fae.png" width="200">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -60,7 +60,7 @@ T-Hub is an LFG-type application directed only to T-Systems employees with the a
 
 1. Include a Java/Spring Boot backend.
 2. Everything should be stored in Railway MySQL Database.
-3. Include authentication with Spring Security.
+3. Include authentication with Spring Security JWT.
 4. Include unit and integration tests.
 5. Include robust error handling.
 
