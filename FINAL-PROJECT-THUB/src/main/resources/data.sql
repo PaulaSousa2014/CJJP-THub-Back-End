@@ -219,3 +219,11 @@ INSERT INTO games (title, description, playtime) VALUES ('Grand Theft Auto V', '
 INSERT INTO games (title, description, playtime) VALUES ('Minecraft', 'Sandbox video game developed and published by Mojang Studios', 720);
 INSERT INTO games (title, description, playtime) VALUES ('Overwatch', 'First-person shooter game developed and published by Blizzard Entertainment', 180);
 INSERT INTO games (title, description, playtime) VALUES ('The Witcher 3: Wild Hunt', 'Action role-playing game developed and published by CD Projekt', 180);
+
+INSERT INTO activities (title, description, activity_type) VALUES ('Yoga Class', 'One-hour Vinyasa Flow yoga class', 'Fitness');
+INSERT INTO activities (title, description, activity_type) VALUES ('Painting Workshop', 'Two-hour painting workshop with acrylic paints', 'Art');
+INSERT INTO activities (title, description, activity_type) VALUES ('Book Club Meeting', 'Monthly book club meeting to discuss "The Great Gatsby"', 'Literature');
+INSERT INTO activities (title, description, activity_type) VALUES ('Hiking Trip', 'Full-day hike in the nearby national park', 'Outdoors');
+INSERT INTO activities (title, description, activity_type) VALUES ('Cooking Class', 'Three-hour cooking class on Italian cuisine', 'Food');
+INSERT INTO activities (title, description, activity_type) VALUES ('Photography Walk', 'Two-hour photography walk in the city', 'Art');
+INSERT INTO activities (title, description, activity_type) VALUES  ('Wine Tasting', 'Two-hour wine tasting event with sommelier', 'Food and Drink');

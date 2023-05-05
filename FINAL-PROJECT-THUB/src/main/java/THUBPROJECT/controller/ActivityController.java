@@ -18,12 +18,12 @@ public class ActivityController {
 		ActivityService activityService;
 
 		// Get Mappings
-		@GetMapping("/activitys")
+		@GetMapping("/activities")
 		public List<Activity> listActivities() {
 			return activityService.listActivities();
 		}
 
-		@GetMapping("/activitys/{id}")
+		@GetMapping("/activities/{id}")
 		public Activity activityById(@PathVariable(name = "id") Long id) {
 			Activity activityxID = new Activity();
 
@@ -33,13 +33,13 @@ public class ActivityController {
 		}
 
 		// Post Mappings
-		@PostMapping("/activitys")
+		@PostMapping("/activities")
 		public Activity saveActivity(@RequestBody Activity activity) {
 			return activityService.saveActivity(activity);
 		}
 
 		// Put Mappings
-		@PutMapping("/activitys/{id}")
+		@PutMapping("/activities/{id}")
 		public Activity updateActivity(@PathVariable(name = "id") Long id, @RequestBody Activity activity) {
 			Activity selectedActivity = new Activity(id, activity.getTitle(), activity.getDescription(), activity.getActivity_type());
 			Activity updatedActivity = new Activity();
@@ -49,7 +49,7 @@ public class ActivityController {
 		}
 
 		// Delete Mappings
-		@DeleteMapping("/activitys/{id}")
+		@DeleteMapping("/activities/{id}")
 		public void deleteActivity(@PathVariable(name = "id") Long id) {
 			activityService.deleteActivity(id);
 		}
