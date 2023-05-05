@@ -12,20 +12,20 @@ DROP TABLE IF EXISTS friend_requests;
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS jobs;
 DROP TABLE IF EXISTS offices;
-
-CREATE TABLE IF NOT EXISTS offices (
-id INT NOT NULL AUTO_INCREMENT,
-name VARCHAR(50) NOT NULL,
-location VARCHAR(150)NOT NULL,
-PRIMARY KEY (id)
-);
+DROP TABLE IF EXISTS jobs;
 
 CREATE TABLE IF NOT EXISTS jobs (
 id INT NOT NULL AUTO_INCREMENT,
 title VARCHAR(255) NOT NULL,
 description VARCHAR(255) DEFAULT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS offices (
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(50) NOT NULL,
+location VARCHAR(150)NOT NULL,
 PRIMARY KEY (id)
 );
 
@@ -40,9 +40,9 @@ id INT NOT NULL AUTO_INCREMENT,
 username VARCHAR(255) NOT NULL,
 password VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL,
-steam_username VARCHAR(255) NOT NULL,
-position INT NOT NULL,
-office INT NOT NULL,
+steam_username VARCHAR(255) DEFAULT NULL,
+position INT DEFAULT NULL,
+office INT DEFAULT NULL,
 PRIMARY KEY (id),
 CONSTRAINT FK_users_position FOREIGN KEY (position) REFERENCES jobs(id) ON UPDATE CASCADE ON DELETE CASCADE,
 CONSTRAINT FK_users_office FOREIGN KEY (office) REFERENCES offices(id) ON UPDATE CASCADE ON DELETE CASCADE
@@ -164,3 +164,28 @@ CREATE TABLE IF NOT EXISTS messages (
     CONSTRAINT FK_messages_sender FOREIGN KEY (sender) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FK_messages_party FOREIGN KEY (party) REFERENCES parties(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+INSERT INTO jobs (title, description) VALUES ('Front-End Developer', 'Creative bois');
+INSERT INTO jobs (title, description) VALUES ('Back-End Developer', 'Raging bois');
+
+INSERT INTO offices (name, location) VALUES ('REDESA', 'Somewhere in Reus around the cinemas lol');
+INSERT INTO offices (name, location) VALUES ('TSystems', 'Close to the hospital, still being built it seems');
+
+INSERT INTO roles (name) VALUES ('ROLE_USER');
+INSERT INTO roles (name) VALUES ('ROLE_MOD');
+INSERT INTO roles (name) VALUES ('ROLE_ADMIN');
+
+INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('javier', 'javipass', 'javi@javi.com', 'javisteam', 1, 1);
+INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('camila', 'camipass', 'cami@cami.com', 'camisteam', 1, 1);
+INSERT INTO users (username, password, email, steam_username, position, office) VALUES ('josep', 'josepass', 'jose@jose.com', 'josesteam', 2, 2);
+INSERT INTO users (username, password, email) VALUES ('paula', 'paulipass', 'pauli@pauli.com');
+
+INSERT INTO user_roles (user, role) VALUES (1, 1);
+INSERT INTO user_roles (user, role) VALUES (2, 1);
+INSERT INTO user_roles (user, role) VALUES (3, 1);
+INSERT INTO user_roles (user, role) VALUES (4, 1);
+INSERT INTO user_roles (user, role) VALUES (1, 3);
+INSERT INTO user_roles (user, role) VALUES (2, 3);
+INSERT INTO user_roles (user, role) VALUES (3, 3);
+INSERT INTO user_roles (user, role) VALUES (4, 3);
+
