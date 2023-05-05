@@ -66,19 +66,8 @@ T-Hub is an LFG-type application directed only to T-Systems employees with the a
 
 ## API Routes
 
-**GET**
-        
-   
-    
- **POST**
-    
-    
-        
- **PUT** 
- 
-    
-    
- **DELETE**
+You can find all routes information on 
+[T-Hub documentation](https://documenter.getpostman.com/view/22849326/2s93eX1YiE).
     
    
 
