@@ -38,7 +38,7 @@ public class PrivMessageController {
 	// Put Mappings
 	@PutMapping("/privMessages/{id}")
 	public PrivMessage updatePrivMessage(@PathVariable(name = "id") Long id, @RequestBody PrivMessage privMessage) {
-		PrivMessage selectedPrivMessage = new PrivMessage(id, privMessage.getContent(), privMessage.getTimestamp(), privMessage.getSender(), privMessage.getReceiver());
+		PrivMessage selectedPrivMessage = new PrivMessage(id, privMessage.getContent(), privMessage.getSender(), privMessage.getReceiver());
 		PrivMessage updatedPrivMessage = new PrivMessage();
 		updatedPrivMessage = privMessageService.updatePrivMessage(selectedPrivMessage);
 		return updatedPrivMessage;

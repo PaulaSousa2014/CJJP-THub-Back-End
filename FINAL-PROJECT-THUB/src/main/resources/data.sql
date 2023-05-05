@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS friend_requests (
 CREATE TABLE IF NOT EXISTS private_messages (
     id INT AUTO_INCREMENT,
     content VARCHAR(255) NOT NULL,
-    timestamp TIMESTAMP NOT NULL,
+    message_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     sender INT NOT NULL,
     receiver INT NOT NULL,
     PRIMARY KEY (id),
@@ -191,10 +191,15 @@ INSERT INTO user_roles (user, role) VALUES (2, 3);
 INSERT INTO user_roles (user, role) VALUES (3, 3);
 INSERT INTO user_roles (user, role) VALUES (4, 3);
 
-INSERT INTO  friend_requests (sender_request, receiver_request) VALUES (1,2);
-INSERT INTO  friend_requests (sender_request, receiver_request) VALUES (2,3);
-INSERT INTO  friend_requests (sender_request, receiver_request) VALUES (3,4);
-INSERT INTO  friend_requests (sender_request, receiver_request) VALUES (4,1);
+INSERT INTO friend_requests (sender_request, receiver_request) VALUES (1,2);
+INSERT INTO friend_requests (sender_request, receiver_request) VALUES (2,3);
+INSERT INTO friend_requests (sender_request, receiver_request) VALUES (3,4);
+INSERT INTO friend_requests (sender_request, receiver_request) VALUES (4,1);
+
+INSERT INTO private_messages (content, sender, receiver) VALUES ('Message 1', 1, 3);
+INSERT INTO private_messages (content, sender, receiver) VALUES ('Message 2', 2, 4);
+INSERT INTO private_messages (content, sender, receiver) VALUES ('Message 3', 3, 1);
+INSERT INTO private_messages (content, sender, receiver) VALUES ('Message 4', 4, 2);
 
 INSERT INTO posts (title, content, creator) VALUES ('I love Cats!', 'Cats are the best thing ever, I swear to god I have over 400 cats adopted already', 2);
 INSERT INTO posts (title, content, creator) VALUES ('Test', 'Testing', 3);

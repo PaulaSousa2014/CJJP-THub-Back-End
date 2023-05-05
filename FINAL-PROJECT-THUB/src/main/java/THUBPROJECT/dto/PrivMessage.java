@@ -14,7 +14,7 @@ public class PrivMessage {
 	@Column(name="content")
 	private String content;
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "timestamp")
+	@Column(name = "message_timestamp")
 	private LocalDateTime timestamp;
 	
 	@ManyToOne
@@ -28,10 +28,10 @@ public class PrivMessage {
 	// Constructors
 	public PrivMessage() {}
 	
-	public PrivMessage(Long id, String content, LocalDateTime timestamp, User sender, User receiver) {
+	public PrivMessage(Long id, String content, User sender, User receiver) {
 		this.id = id;
 		this.content = content;
-		this.timestamp = timestamp;
+		this.timestamp = LocalDateTime.now();
 		this.sender = sender;
 		this.receiver = receiver;
 	}

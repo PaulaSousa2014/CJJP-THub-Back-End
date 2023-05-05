@@ -46,10 +46,10 @@ public class Message {
 	private Party party;
 
 	// Constructors
-	public Message(Long id, String content, LocalDateTime timeSent, User sender, Party party) {
+	public Message(Long id, String content, User sender, Party party) {
 		this.id = id;
 		this.content = content;
-		this.timeSent = timeSent;
+		this.timeSent = LocalDateTime.now();
 		this.sender = sender;
 		this.party = party;
 	}
