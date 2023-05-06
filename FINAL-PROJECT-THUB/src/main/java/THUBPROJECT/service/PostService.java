@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.PostDAO;
 import THUBPROJECT.dto.Post;
+import THUBPROJECT.dto.User;
 import THUBPROJECT.service.Interfaces.PostServiceInterface;
 
 @Service // Assign Service
@@ -39,5 +40,13 @@ public class PostService implements PostServiceInterface{
 	public void deletePost(Long id) {
 		postDAO.deleteById(id);
 	}
+
+
+	public List<Post> findPostsByCreator(User creator) {
+
+		return postDAO.findPostsByCreator(creator);
+	}
+
+
 
 }

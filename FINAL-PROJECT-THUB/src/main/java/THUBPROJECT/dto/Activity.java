@@ -22,7 +22,7 @@ public class Activity {
 	private String description;
 
 	@Column(name = "activity_type")
-	private String activity_type;
+	private String type;
 
 	@OneToMany(mappedBy = ("activity"))
 	private List<Party> parties;
@@ -35,7 +35,7 @@ public class Activity {
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.activity_type = activity_type;
+		this.type = activity_type;
 	}
 
 	/**
@@ -62,8 +62,8 @@ public class Activity {
 	/**
 	 * @return the activity_type
 	 */
-	public String getActivity_type() {
-		return activity_type;
+	public String getType() {
+		return type;
 	}
 
 	@JsonIgnore
@@ -96,8 +96,8 @@ public class Activity {
 	/**
 	 * @param activity_type the activity_type to set
 	 */
-	public void setActivity_type(String activity_type) {
-		this.activity_type = activity_type;
+	public void setType(String activity_type) {
+		this.type = activity_type;
 	}
 
 	public void setParties(List<Party> parties) {

@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import THUBPROJECT.dto.PrivMessage;
+import THUBPROJECT.dto.User;
 import THUBPROJECT.service.PrivMessageService;
 
 @RestController // Rest controller
@@ -30,6 +31,20 @@ public class PrivMessageController {
 		PrivMessage privMessagesxID = new PrivMessage();
 		privMessagesxID = privMessageService.privMessageById(id);
 		return privMessagesxID;
+	}
+	
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/privMessages/sender")
+	public List<PrivMessage> findPrivMessageBySender(@RequestBody User sender) {
+
+		return privMessageService.findPrivMessageBySender(sender);
+	}
+
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/privMessages/receiver")
+	public List<PrivMessage> findPrivMessageByReceiver(@RequestBody User receiver) {
+
+		return privMessageService.findPrivMessageByReceiver(receiver);
 	}
 
 	// Post Mappings

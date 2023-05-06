@@ -5,6 +5,7 @@ package THUBPROJECT.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import THUBPROJECT.dto.Post;
+import THUBPROJECT.dto.User;
 import THUBPROJECT.service.PostService;
 
 @RestController // Rest controller
@@ -42,6 +44,14 @@ public class PostController {
 		postxID = postService.postById(id);
 
 		return postxID;
+	}
+	
+	//Get all post by Creator
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/posts/creator")
+	public List<Post> findPostsByCreator(@RequestBody  User creator)  {
+
+		return postService.findPostsByCreator(creator);
 	}
 
 	// Post Mappings

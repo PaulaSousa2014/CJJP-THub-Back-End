@@ -61,10 +61,25 @@ public class PartyController {
 		return partyService.listPartiesBySocialId(socialId);
 	}
 	
+	//Find parties by game title
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/game/title/{gameTitle}")
 	public List<Party> listPartiesByGameTitleContaining(@PathVariable(name = "gameTitle")String gameTitle){
 		return partyService.listPartiesByGameTitleContaining(gameTitle);
+	}
+	
+	//Find parties by social theme
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/parties/social/theme/{theme}")
+	public List<Party> listPartiesBySocialThemeContaining(@PathVariable(name = "theme")String theme){
+		return partyService.findPartiesBySocialThemeContaining(theme);
+	}
+	
+	//Find parties by activity type
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/parties/activity/type/{type}")
+	public List<Party> listPartiesByActivityTypeContaining(@PathVariable(name = "type")String type){
+		return partyService.findPartiesByActivityTypeContaining(type);
 	}
 
 	// Post Mappings

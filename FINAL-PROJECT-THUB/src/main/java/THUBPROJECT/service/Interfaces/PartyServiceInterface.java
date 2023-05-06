@@ -16,6 +16,10 @@ public interface PartyServiceInterface {
 	public List<Party> listPartiesBySocialId(Long socialId);
 	
 	public List<Party> listPartiesByGameTitleContaining(String title);
+	
+	public List<Party> findPartiesBySocialThemeContaining(String theme);
+	
+	public List<Party> findPartiesByActivityTypeContaining(String activity_type);
 
 	public Party saveParty(Party party);
 

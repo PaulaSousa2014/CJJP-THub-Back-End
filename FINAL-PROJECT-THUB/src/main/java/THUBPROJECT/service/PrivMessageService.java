@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import THUBPROJECT.dao.PrivMessageDAO;
 import THUBPROJECT.dto.PrivMessage;
+import THUBPROJECT.dto.User;
 import THUBPROJECT.service.Interfaces.PrivMessageServiceInterface;
 
 @Service // Assign Service
@@ -33,6 +34,18 @@ public class PrivMessageService implements PrivMessageServiceInterface{
 
 	public void deletePrivMessage(Long id) {
 		privMessageDAO.deleteById(id);
+	}
+
+
+	public List<PrivMessage> findPrivMessageBySender(User sender) {
+
+		return privMessageDAO.findPrivMessageBySender(sender);
+	}
+
+
+	public List<PrivMessage> findPrivMessageByReceiver(User receiver) {
+
+		return privMessageDAO.findPrivMessageByReceiver(receiver);
 	}
 
 }

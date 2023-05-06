@@ -36,6 +36,18 @@ public class PartyService implements PartyServiceInterface {
 	public List<Party> listPartiesByGameTitleContaining(String title) {
 		return partyDAO.findPartiesByGameTitleContaining(title);
 	}
+	
+
+	public List<Party> findPartiesBySocialThemeContaining(String theme) {
+		
+		return partyDAO.findPartiesBySocialThemeContaining(theme);
+	}
+	
+	
+	public List<Party> findPartiesByActivityTypeContaining(String activity_type) {
+	
+		return partyDAO.findPartiesByActivityTypeContaining(activity_type);
+	}
 
 	public Party saveParty(Party party) {
 		return partyDAO.save(party);
@@ -52,5 +64,9 @@ public class PartyService implements PartyServiceInterface {
 	public void deleteParty(Long id) {
 		partyDAO.deleteById(id);
 	}
+
+
+
+
 
 }

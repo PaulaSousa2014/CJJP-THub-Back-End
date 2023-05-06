@@ -15,5 +15,9 @@ public interface PartyDAO extends JpaRepository<Party, Long> {
 	List<Party> findPartiesBySocialId(Long socialId);
 
 	List<Party> findPartiesByGameTitleContaining(String title);
+	
+	List<Party> findPartiesBySocialThemeContaining(String theme);
+	
+	List<Party> findPartiesByActivityTypeContaining(String activity_type);
 
 }

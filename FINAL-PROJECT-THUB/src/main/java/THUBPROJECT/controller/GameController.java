@@ -38,6 +38,7 @@ public class GameController {
 		return gamexID;
 	}
 	
+	//Find game by title keyword
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/games/title/{title}")
 	public List<Game> listGamesByTitleContaining(@PathVariable(name = "title") String title) {

@@ -45,7 +45,7 @@ public class ActivityController {
 		@PreAuthorize("hasRole('USER')")
 		@PutMapping("/activities/{id}")
 		public Activity updateActivity(@PathVariable(name = "id") Long id, @RequestBody Activity activity) {
-			Activity selectedActivity = new Activity(id, activity.getTitle(), activity.getDescription(), activity.getActivity_type());
+			Activity selectedActivity = new Activity(id, activity.getTitle(), activity.getDescription(), activity.getType());
 			Activity updatedActivity = new Activity();
 
 			updatedActivity = activityService.updateActivity(selectedActivity);
