@@ -8,6 +8,8 @@ public interface GameServiceInterface {
 	
 	// CRUD functions
 	public List<Game> listGames();
+	
+	public List<Game> listGamesByTitleContaining(String title);
 
 	public Game saveGame(Game game);
 

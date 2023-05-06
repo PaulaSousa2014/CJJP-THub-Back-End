@@ -37,6 +37,13 @@ public class GameController {
 
 		return gamexID;
 	}
+	
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/games/title/{title}")
+	public List<Game> listGamesByTitleContaining(@PathVariable(name = "title") String title) {
+
+		return gameService.listGamesByTitleContaining(title);
+	}
 
 	// Post Mappings
 	@PreAuthorize("hasRole('USER')")

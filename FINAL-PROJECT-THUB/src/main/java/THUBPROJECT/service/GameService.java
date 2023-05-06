@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.GameDAO;
 import THUBPROJECT.dto.Game;
-import THUBPROJECT.dto.Party;
 import THUBPROJECT.service.Interfaces.GameServiceInterface;
 
 @Service // Assign Service
@@ -20,6 +19,10 @@ public class GameService implements GameServiceInterface{
 	// CRUD functions
 	public List<Game> listGames() {
 		return gameDAO.findAll();
+	}
+	
+	public List<Game> listGamesByTitleContaining(String title) {
+		return gameDAO.findGamesByTitleContaining(title);
 	}
 
 	public Game saveGame(Game game) {
