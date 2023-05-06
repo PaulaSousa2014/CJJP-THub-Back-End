@@ -84,6 +84,28 @@ public class User {
 		this.job = job;
 		this.office = office;
 	}
+	
+	public User(String username, String email, String password) {
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
+	
+
+	
+
+	public User(Long id, String username, String password, String email, String steam_username, Job job, Office office,
+			Set<Role> roles) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.steam_username = steam_username;
+		this.job = job;
+		this.office = office;
+		this.roles = roles;
+	}
 
 	// Getters
 	public Long getId() {

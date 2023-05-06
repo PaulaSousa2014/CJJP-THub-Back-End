@@ -3,6 +3,7 @@ package THUBPROJECT.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import THUBPROJECT.dto.Friend;
@@ -17,11 +18,13 @@ public class FriendController {
 	FriendService friendService;
 
 	// Get Mappings
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/friends")
 	public List<Friend> listUsers() {
 		return friendService.listFriends();
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/friends/{id}")
 	public Friend userById(@PathVariable(name = "id") Long id) {
 		Friend friendxID = new Friend();
@@ -30,12 +33,14 @@ public class FriendController {
 	}
 
 	// Post Mappings
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/friends")
 	public Friend saveUser(@RequestBody Friend friend) {
 		return friendService.saveFriend(friend);
 	}
 
 	// Put Mappings
+	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/friends/{id}")
 	public Friend updateUser(@PathVariable(name = "id") Long id, @RequestBody Friend friend) {
 		Friend selectedFriend = new Friend(id, friend.getUserSender(), friend.getUserReciever());
@@ -46,6 +51,7 @@ public class FriendController {
 	}
 
 	// Delete Mappings
+	@PreAuthorize("hasRole('USER')")
 	@DeleteMapping("/friends/{id}")
 	public void deleteUser(@PathVariable(name = "id") Long id) {
 		friendService.deleteFriend(id);

@@ -3,55 +3,72 @@ package THUBPROJECT.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import THUBPROJECT.dto.Game;
 import THUBPROJECT.service.GameService;
+import THUBPROJECT.service.PartyService;
 
 @RestController // Rest controller
 @RequestMapping("/api")
 public class GameController {
 
 	// Implement service
-		@Autowired
-		GameService gameService;
+	@Autowired
+	GameService gameService;
 
-		// Get Mappings
-		@GetMapping("/games")
-		public List<Game> listGames() {
-			return gameService.listGames();
-		}
+	@Autowired
+	PartyService partyService;
 
-		@GetMapping("/games/{id}")
-		public Game gameById(@PathVariable(name = "id") Long id) {
-			Game gamexID = new Game();
+	// Get Mappings
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/games")
+	public List<Game> listGames() {
+		return gameService.listGames();
+	}
 
-			gamexID = gameService.gameById(id);
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/games/{id}")
+	public Game gameById(@PathVariable(name = "id") Long id) {
+		Game gamexID = new Game();
 
-			return gamexID;
-		}
+		gamexID = gameService.gameById(id);
 
-		// Post Mappings
-		@PostMapping("/games")
-		public Game saveGame(@RequestBody Game game) {
-			return gameService.saveGame(game);
-		}
+		return gamexID;
+	}
+	
+	//Find game by title keyword
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/games/title/{title}")
+	public List<Game> listGamesByTitleContaining(@PathVariable(name = "title") String title) {
 
-		// Put Mappings
-		@PutMapping("/games/{id}")
-		public Game updateGame(@PathVariable(name = "id") Long id, @RequestBody Game game) {
-			Game selectedGame = new Game(id, game.getTitle(), game.getDescription(), game.getPlaytime());
-			Game updatedGame = new Game();
+		return gameService.listGamesByTitleContaining(title);
+	}
 
-			updatedGame = gameService.updateGame(selectedGame);
-			return updatedGame;
-		}
+	// Post Mappings
+	@PreAuthorize("hasRole('USER')")
+	@PostMapping("/games")
+	public Game saveGame(@RequestBody Game game) {
+		return gameService.saveGame(game);
+	}
 
-		// Delete Mappings
-		@DeleteMapping("/games/{id}")
-		public void deleteGame(@PathVariable(name = "id") Long id) {
-			gameService.deleteGame(id);
-		}
+	// Put Mappings
+	@PreAuthorize("hasRole('USER')")
+	@PutMapping("/games/{id}")
+	public Game updateGame(@PathVariable(name = "id") Long id, @RequestBody Game game) {
+		Game selectedGame = new Game(id, game.getTitle(), game.getDescription(), game.getPlaytime());
+		Game updatedGame = new Game();
+
+		updatedGame = gameService.updateGame(selectedGame);
+		return updatedGame;
+	}
+
+	// Delete Mappings
+	@PreAuthorize("hasRole('USER')")
+	@DeleteMapping("/games/{id}")
+	public void deleteGame(@PathVariable(name = "id") Long id) {
+		gameService.deleteGame(id);
+	}
 
 }

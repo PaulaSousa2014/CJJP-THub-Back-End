@@ -5,9 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import THUBPROJECT.dao.RoleDAO;
 import THUBPROJECT.dto.Role;
+import THUBPROJECT.service.Interfaces.RoleServiceInterface;
 
 @Service // Assign Service
-public class RoleService {
+public class RoleService implements RoleServiceInterface{
 
 	// Load DAO
 	@Autowired

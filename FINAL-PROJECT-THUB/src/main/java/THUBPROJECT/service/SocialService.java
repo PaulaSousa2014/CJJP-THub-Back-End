@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.SocialDAO;
 import THUBPROJECT.dto.Social;
+import THUBPROJECT.service.Interfaces.SocialServiceInterface;
 
 @Service // Assign Service
-public class SocialService {
+public class SocialService implements SocialServiceInterface{
 
 	// Load DAO
 	@Autowired

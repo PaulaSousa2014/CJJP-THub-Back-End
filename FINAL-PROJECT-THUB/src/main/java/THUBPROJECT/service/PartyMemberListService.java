@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.PartyMemberListDAO;
 import THUBPROJECT.dto.PartyMemberList;
+import THUBPROJECT.service.Interfaces.PartyMemberListServiceInterface;
 
 @Service
-public class PartyMemberListService {
+public class PartyMemberListService implements PartyMemberListServiceInterface{
 	
 	// Load DAO
 		@Autowired

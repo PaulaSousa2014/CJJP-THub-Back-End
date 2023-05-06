@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.JobDAO;
 import THUBPROJECT.dto.Job;
+import THUBPROJECT.service.Interfaces.JobServiceInterface;
 
 @Service // Assign Service
-public class JobService {
+public class JobService implements JobServiceInterface{
 
 	// Load DAO
 	@Autowired

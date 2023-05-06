@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.MessageDAO;
 import THUBPROJECT.dto.Message;
+import THUBPROJECT.service.Interfaces.MessageServiceInterface;
 
 @Service
-public class MessageService {
+public class MessageService implements MessageServiceInterface{
 	
 	// Load DAO	
 	@Autowired 

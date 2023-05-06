@@ -1,6 +1,16 @@
 package THUBPROJECT.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import THUBPROJECT.dto.PrivMessage;
+import java.util.List;
 
-public interface PrivMessageDAO extends JpaRepository<PrivMessage, Long> {}
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+import THUBPROJECT.dto.PrivMessage;
+import THUBPROJECT.dto.User;
+
+public interface PrivMessageDAO extends JpaRepository<PrivMessage, Long> {
+	
+	List<PrivMessage> findPrivMessageBySender(User sender);
+	
+	List<PrivMessage> findPrivMessageByReceiver(User receiver);
+}

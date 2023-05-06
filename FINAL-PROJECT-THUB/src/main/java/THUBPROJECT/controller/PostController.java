@@ -5,7 +5,9 @@ package THUBPROJECT.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import THUBPROJECT.dto.Post;
+import THUBPROJECT.dto.User;
 import THUBPROJECT.service.PostService;
 
 @RestController // Rest controller
@@ -27,11 +30,13 @@ public class PostController {
 	PostService postService;
 
 	// Get Mappings
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/posts")
 	public List<Post> listPosts() {
 		return postService.listPosts();
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/posts/{id}")
 	public Post postById(@PathVariable(name = "id") Long id) {
 		Post postxID = new Post();
@@ -40,14 +45,24 @@ public class PostController {
 
 		return postxID;
 	}
+	
+	//Get all post by Creator
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/posts/creator")
+	public List<Post> findPostsByCreator(@RequestBody  User creator)  {
+
+		return postService.findPostsByCreator(creator);
+	}
 
 	// Post Mappings
 	@PostMapping("/posts")
+	@PreAuthorize("hasRole('USER')")
 	public Post savePost(@RequestBody Post post) {
 		return postService.savePost(post);
 	}
 
 	// Put Mappings
+	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/posts/{id}")
 	public Post updatePost(@PathVariable(name = "id") Long id, @RequestBody Post post) {
 		Post selectedPost = new Post(id, post.getTitle(), post.getContent(), post.getCreator());
@@ -58,6 +73,7 @@ public class PostController {
 	}
 
 	// Delete Mappings
+	@PreAuthorize("hasRole('USER')")
 	@DeleteMapping("/posts/{id}")
 	public void deletePost(@PathVariable(name = "id") Long id) {
 		postService.deletePost(id);

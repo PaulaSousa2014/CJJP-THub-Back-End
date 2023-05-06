@@ -6,6 +6,7 @@ package THUBPROJECT.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,11 +28,13 @@ public class JobController {
 	JobService jobService;
 
 	// Get Mappings
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/jobs")
 	public List<Job> listJobs() {
 		return jobService.listJobs();
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/jobs/{id}")
 	public Job jobById(@PathVariable(name = "id") Long id) {
 		Job jobxID = new Job();
@@ -42,12 +45,14 @@ public class JobController {
 	}
 
 	// Post Mappings
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/jobs")
 	public Job saveJob(@RequestBody Job job) {
 		return jobService.saveJob(job);
 	}
 
 	// Put Mappings
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/jobs/{id}")
 	public Job updateJob(@PathVariable(name = "id") Long id, @RequestBody Job job) {
 		Job selectedJob = new Job(id, job.getTitle(), job.getDescription());
@@ -58,6 +63,7 @@ public class JobController {
 	}
 
 	// Delete Mappings
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/jobs/{id}")
 	public void deleteJob(@PathVariable(name = "id") Long id) {
 		jobService.deleteJob(id);

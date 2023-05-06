@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import THUBPROJECT.dao.ActivityDAO;
 import THUBPROJECT.dto.Activity;
+import THUBPROJECT.service.Interfaces.ActivityServiceInterface;
 
 @Service // Assign Service
-public class ActivityService {
+public class ActivityService implements ActivityServiceInterface{
 
 	// Load DAO
 	@Autowired

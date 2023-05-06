@@ -7,9 +7,10 @@ import org.springframework.stereotype.*;
 
 import THUBPROJECT.dao.UserDAO;
 import THUBPROJECT.dto.User;
+import THUBPROJECT.service.Interfaces.UserServiceInterface;
 
 @Service // Assign Service
-public class UserService {
+public class UserService implements UserServiceInterface{
 
 	// Load DAO
 	@Autowired
