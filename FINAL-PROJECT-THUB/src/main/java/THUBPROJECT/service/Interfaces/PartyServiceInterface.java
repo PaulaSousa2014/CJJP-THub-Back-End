@@ -11,9 +11,11 @@ public interface PartyServiceInterface {
 	
 	public List<Party> listPartiesByGameId(Long gameId);
 	
-	public List<Party> findPartiesByActivityId(Long activityId);
+	public List<Party> listPartiesByActivityId(Long activityId);
 	
-	public List<Party> findPartiesBySocialId(Long socialId);
+	public List<Party> listPartiesBySocialId(Long socialId);
+	
+	public List<Party> listPartiesByGameTitleContaining(String title);
 
 	public Party saveParty(Party party);
 
