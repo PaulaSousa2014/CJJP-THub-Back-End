@@ -46,6 +46,7 @@ public class JobController {
 
 	// Post Mappings
 	@PreAuthorize("hasRole('ADMIN')")
+	@PostMapping("/jobs")
 	public Job saveJob(@RequestBody Job job) {
 		return jobService.saveJob(job);
 	}

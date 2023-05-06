@@ -7,7 +7,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import THUBPROJECT.dto.Game;
-import THUBPROJECT.dto.Party;
 import THUBPROJECT.service.GameService;
 import THUBPROJECT.service.PartyService;
 
@@ -16,53 +15,52 @@ import THUBPROJECT.service.PartyService;
 public class GameController {
 
 	// Implement service
-		@Autowired
-		GameService gameService;
-		
-		@Autowired
-		PartyService partyService;
+	@Autowired
+	GameService gameService;
 
-		// Get Mappings
-		@PreAuthorize("hasRole('USER')")
-		@GetMapping("/games")
-		public List<Game> listGames() {
-			return gameService.listGames();
-		}
+	@Autowired
+	PartyService partyService;
 
-		@PreAuthorize("hasRole('USER')")
-		@GetMapping("/games/{id}")
-		public Game gameById(@PathVariable(name = "id") Long id) {
-			Game gamexID = new Game();
+	// Get Mappings
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/games")
+	public List<Game> listGames() {
+		return gameService.listGames();
+	}
 
-			gamexID = gameService.gameById(id);
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/games/{id}")
+	public Game gameById(@PathVariable(name = "id") Long id) {
+		Game gamexID = new Game();
 
-			return gamexID;
-		}
-		
+		gamexID = gameService.gameById(id);
 
-		// Post Mappings
-		@PreAuthorize("hasRole('USER')")
-		@PostMapping("/games")
-		public Game saveGame(@RequestBody Game game) {
-			return gameService.saveGame(game);
-		}
+		return gamexID;
+	}
 
-		// Put Mappings
-		@PreAuthorize("hasRole('USER')")
-		@PutMapping("/games/{id}")
-		public Game updateGame(@PathVariable(name = "id") Long id, @RequestBody Game game) {
-			Game selectedGame = new Game(id, game.getTitle(), game.getDescription(), game.getPlaytime());
-			Game updatedGame = new Game();
+	// Post Mappings
+	@PreAuthorize("hasRole('USER')")
+	@PostMapping("/games")
+	public Game saveGame(@RequestBody Game game) {
+		return gameService.saveGame(game);
+	}
 
-			updatedGame = gameService.updateGame(selectedGame);
-			return updatedGame;
-		}
+	// Put Mappings
+	@PreAuthorize("hasRole('USER')")
+	@PutMapping("/games/{id}")
+	public Game updateGame(@PathVariable(name = "id") Long id, @RequestBody Game game) {
+		Game selectedGame = new Game(id, game.getTitle(), game.getDescription(), game.getPlaytime());
+		Game updatedGame = new Game();
 
-		// Delete Mappings
-		@PreAuthorize("hasRole('USER')")
-		@DeleteMapping("/games/{id}")
-		public void deleteGame(@PathVariable(name = "id") Long id) {
-			gameService.deleteGame(id);
-		}
+		updatedGame = gameService.updateGame(selectedGame);
+		return updatedGame;
+	}
+
+	// Delete Mappings
+	@PreAuthorize("hasRole('USER')")
+	@DeleteMapping("/games/{id}")
+	public void deleteGame(@PathVariable(name = "id") Long id) {
+		gameService.deleteGame(id);
+	}
 
 }
