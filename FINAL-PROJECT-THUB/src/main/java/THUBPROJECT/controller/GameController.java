@@ -21,7 +21,7 @@ public class GameController {
 	@Autowired
 	PartyService partyService;
 
-	// Get Mappings
+	// Get all games
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/games")
 	public List<Game> listGames() {
@@ -53,7 +53,7 @@ public class GameController {
 		return gameService.saveGame(game);
 	}
 
-	// Put Mappings
+	// Put game by ID
 	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/games/{id}")
 	public Game updateGame(@PathVariable(name = "id") Long id, @RequestBody Game game) {
@@ -64,7 +64,7 @@ public class GameController {
 		return updatedGame;
 	}
 
-	// Delete Mappings
+	// Delete game by ID
 	@PreAuthorize("hasRole('USER')")
 	@DeleteMapping("/games/{id}")
 	public void deleteGame(@PathVariable(name = "id") Long id) {
