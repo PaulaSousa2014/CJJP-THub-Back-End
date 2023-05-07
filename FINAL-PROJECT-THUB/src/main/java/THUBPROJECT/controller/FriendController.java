@@ -17,7 +17,7 @@ public class FriendController {
 	@Autowired
 	FriendService friendService;
 
-	// Get Mappings
+	// Get all friends 
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/friends")
 	public List<Friend> listUsers() {
@@ -39,7 +39,7 @@ public class FriendController {
 		return friendService.saveFriend(friend);
 	}
 
-	// Put Mappings
+	// Put friend by ID
 	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/friends/{id}")
 	public Friend updateUser(@PathVariable(name = "id") Long id, @RequestBody Friend friend) {
@@ -50,7 +50,7 @@ public class FriendController {
 		return updatedFriend;
 	}
 
-	// Delete Mappings
+	// Delete friend by ID
 	@PreAuthorize("hasRole('USER')")
 	@DeleteMapping("/friends/{id}")
 	public void deleteUser(@PathVariable(name = "id") Long id) {
