@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import THUBPROJECT.dto.Game;
 import THUBPROJECT.dto.PartyMemberList;
 import THUBPROJECT.service.PartyMemberListService;
 
@@ -53,10 +55,24 @@ public class PartyMemberListController {
 	}
 
 	// Post Mappings
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/party_members")
 	public PartyMemberList savePartyMemberList(@RequestBody PartyMemberList partyMemberList) {
 		return partyMemberListService.savePartyMemberList(partyMemberList);
+	}
+	
+	// Put Mappings
+	@PreAuthorize("hasRole('USER')")
+	@PutMapping("/party_members/{party_members_id}")
+	public PartyMemberList updatePartyMemberList(@PathVariable(name = "party_members_id") Long id, @RequestBody  PartyMemberList list) {
+		
+		PartyMemberList selectedList = new PartyMemberList(id, list.getUser(), list.getParty());
+		PartyMemberList updatedList = new PartyMemberList();
+		
+		updatedList = partyMemberListService.updatePartyMemberList(selectedList);
+		
+
+		return updatedList;
 	}
 
 	// Delete Mappings

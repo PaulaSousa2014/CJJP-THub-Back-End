@@ -14,6 +14,8 @@ public interface PartyMemberListServiceInterface {
 	public List<PartyMemberList> listUsersByPartyId(Long partyId);
 
 	public PartyMemberList savePartyMemberList(PartyMemberList party_member);
+	
+	public PartyMemberList updatePartyMemberList(PartyMemberList party_member);
 
 	public PartyMemberList partyMemberListById(Long id);
 

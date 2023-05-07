@@ -32,6 +32,11 @@ public class PartyMemberListService implements PartyMemberListServiceInterface{
 		public PartyMemberList savePartyMemberList(PartyMemberList party_member) {
 			return partyMemberListDAO.save(party_member);
 		}
+		
+		public PartyMemberList updatePartyMemberList(PartyMemberList party_member) {
+
+			return partyMemberListDAO.save(party_member);
+		}
 
 		public PartyMemberList partyMemberListById(Long id) {
 			return partyMemberListDAO.findById(id).get();
@@ -40,5 +45,7 @@ public class PartyMemberListService implements PartyMemberListServiceInterface{
 		public void deletePartyMemberList(Long id) {
 			partyMemberListDAO.deleteById(id);
 		}
+
+
 
 }
