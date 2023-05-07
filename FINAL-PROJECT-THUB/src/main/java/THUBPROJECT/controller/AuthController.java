@@ -70,7 +70,7 @@ public class AuthController {
 				new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
 	}
 
-	// Signup to reguster a new user
+	// Signup to register a new user
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		// Checks username is availabe
