@@ -17,13 +17,14 @@ public class ActivityController {
 		@Autowired
 		ActivityService activityService;
 
-		// Get Mappings
+		// Get all activities
 		@PreAuthorize("hasRole('USER')")
 		@GetMapping("/activities")
 		public List<Activity> listActivities() {
 			return activityService.listActivities();
 		}
 
+		//Get activities by ID
 		@PreAuthorize("hasRole('USER')")
 		@GetMapping("/activities/{id}")
 		public Activity activityById(@PathVariable(name = "id") Long id) {
@@ -34,14 +35,14 @@ public class ActivityController {
 			return activityxID;
 		}
 
-		// Post Mappings
+		// Post activity
 		@PreAuthorize("hasRole('USER')")
 		@PostMapping("/activities")
 		public Activity saveActivity(@RequestBody Activity activity) {
 			return activityService.saveActivity(activity);
 		}
 
-		// Put Mappings
+		// Put activities by id 
 		@PreAuthorize("hasRole('USER')")
 		@PutMapping("/activities/{id}")
 		public Activity updateActivity(@PathVariable(name = "id") Long id, @RequestBody Activity activity) {
@@ -52,7 +53,7 @@ public class ActivityController {
 			return updatedActivity;
 		}
 
-		// Delete Mappings
+		// Delete Activities by id 
 		@PreAuthorize("hasRole('USER')")
 		@DeleteMapping("/activities/{id}")
 		public void deleteActivity(@PathVariable(name = "id") Long id) {
