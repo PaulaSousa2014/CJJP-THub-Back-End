@@ -17,7 +17,7 @@ public class UserController {
 	// Implement service
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	PasswordEncoder encoder;
 
@@ -49,15 +49,13 @@ public class UserController {
 	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/users/{id}")
 	public User updateUser(@PathVariable(name = "id") Long id, @RequestBody User user) {
-		User selectedUser = new User(id, user.getName(), user.getUsername(), encoder.encode(user.getPassword()), user.getEmail(),
-				user.getSteam_username(), user.getJob(), user.getOffice(), user.getRoles());
+		User selectedUser = new User(id, user.getUsername(), encoder.encode(user.getPassword()), user.getEmail(),
+				user.getNameSurn(), user.getSteam_username(), user.getJob(), user.getOffice(), user.getRoles());
 		User updatedUser = new User();
 
 		updatedUser = userService.updateUser(selectedUser);
 		return updatedUser;
 	}
-	
-
 
 	// Delete Mappings
 	@PreAuthorize("hasRole('USER')")
