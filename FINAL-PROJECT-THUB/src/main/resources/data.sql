@@ -40,6 +40,7 @@ id INT NOT NULL AUTO_INCREMENT,
 username VARCHAR(255) UNIQUE NOT NULL,
 password VARCHAR(255) NOT NULL,
 email VARCHAR(255) UNIQUE NOT NULL,
+name_surname VARCHAR(255) DEFAULT NULL,
 steam_username VARCHAR(255) DEFAULT NULL,
 position INT DEFAULT NULL,
 office INT DEFAULT NULL,
@@ -180,11 +181,11 @@ INSERT INTO roles (name) VALUES
 	('ROLE_MOD'),
 	('ROLE_ADMIN');
 
-INSERT INTO users (username, password, email, steam_username, position, office) VALUES 
-	('javier', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'javi@javi.com', 'javisteam', 1, 1),
-	('camila', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'cami@cami.com', 'camisteam', 1, 1),
-	('josep', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'jose@jose.com', 'josesteam', 2, 2),
-	('paula', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'pauli@pauli.com', 'paulisteam', 2, 2);
+INSERT INTO users (username, password, email, name_surname, steam_username, position, office) VALUES 
+	('javier334', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'javi@javi.com', 'JAVIER PÉREZ', 'javisteam', 1, 1),
+	('camila324', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'cami@cami.com', 'CAMILA GARCIA', 'camisteam', 1, 1),
+	('josep445', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'jose@jose.com', 'JOSEP MARIA PALLÀS','josesteam', 2, 2),
+	('paula334', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'pauli@pauli.com','PAULA SOUSA', 'paulisteam', 2, 2);
 
 INSERT INTO users (username, password, email) VALUES 	
 	('testUser','$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS','testUser@test.com');
