@@ -13,17 +13,20 @@ import jakarta.persistence.*;
 public class User {
 
 	// Attributes
-	//Add name atribute
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+
 	@Column(name = "username")
 	private String username;
 	@Column(name = "password")
 	private String password;
 	@Column(name = "email")
 	private String email;
+	@Column(name = "name_surname")
+	private String nameSurn;
 	@Column(name = "steam_username")
 	private String steam_username;
 
@@ -74,33 +77,33 @@ public class User {
 	public User() {
 	}
 
-	public User(Long id, String username, String password, String email, String steam_username, Job job,
-			Office office) {
+	public User(Long id, String username, String password, String email, String nameSurn, String steam_username,
+			Job job, Office office) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.nameSurn = nameSurn;
 		this.steam_username = steam_username;
 		this.job = job;
 		this.office = office;
 	}
 	
+
 	public User(String username, String email, String password) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
-	
 
-	
-
-	public User(Long id, String username, String password, String email, String steam_username, Job job, Office office,
-			Set<Role> roles) {
+	public User(Long id, String username, String password, String email, String nameSurn, String steam_username,
+			Job job, Office office, Set<Role> roles) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.nameSurn = nameSurn;
 		this.steam_username = steam_username;
 		this.job = job;
 		this.office = office;
@@ -110,6 +113,10 @@ public class User {
 	// Getters
 	public Long getId() {
 		return id;
+	}
+
+	public String getNameSurn() {
+		return nameSurn;
 	}
 
 	public String getUsername() {
@@ -205,6 +212,10 @@ public class User {
 		this.id = id;
 	}
 
+	public void setNameSurn(String nameSurn) {
+		this.nameSurn = nameSurn;
+	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -220,7 +231,7 @@ public class User {
 	public void setSteam_username(String steam_username) {
 		this.steam_username = steam_username;
 	}
-	
+
 	public void setParties(List<Party> parties) {
 		this.parties = parties;
 	}
@@ -272,5 +283,5 @@ public class User {
 	public void setMsgsReceived(List<PrivMessage> msgsReceived) {
 		this.msgsReceived = msgsReceived;
 	}
-	
+
 }
