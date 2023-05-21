@@ -11,7 +11,7 @@ public interface PostServiceInterface {
 	// CRUD functions
 	public List<Post> listPosts();
 	
-	public List<Post> findPostsByCreator(User creator);
+	public List<Post> getPostsByCreator(User creator);
 
 	public Post savePost(Post post);
 

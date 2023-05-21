@@ -5,7 +5,6 @@ package THUBPROJECT.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import THUBPROJECT.dto.Comment;
 import THUBPROJECT.dto.Post;
 import THUBPROJECT.dto.User;
 import THUBPROJECT.service.PostService;
@@ -45,19 +45,33 @@ public class PostController {
 
 		return postxID;
 	}
-	
+
 	// Get like count by post id
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/posts/{id}/likes/ammount")
 	public Long getLikeAmmountByPost(@PathVariable(name = "id") Post id) {
 		return postService.getLikesByPost(id);
 	}
-	
-	//Get all post by Creator
+
+	// Get all comments by Post
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/posts/{id}/comments")
+	public List<Comment> getCommentsByPostId(@PathVariable(name = "id") Long id) {
+		return postService.getCommentsByPostId(id);
+	}
+
+	// Get comment count by post id
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/posts/{id}/comments/ammount")
+	public Long getCommentAmmountByPost(@PathVariable(name = "id") Post id) {
+		return postService.getCommentCountByPost(id);
+	}
+
+	// Get all post by Creator
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/posts/creator/{id}")
-	public List<Post> findPostsByCreator(@PathVariable(name = "id") User id)  {
-		return postService.findPostsByCreator(id);
+	public List<Post> getPostsByCreator(@PathVariable(name = "id") User id) {
+		return postService.getPostsByCreator(id);
 	}
 
 	// Post Mappings
