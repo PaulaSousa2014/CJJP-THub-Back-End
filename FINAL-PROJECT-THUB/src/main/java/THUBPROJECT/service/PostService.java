@@ -41,12 +41,12 @@ public class PostService implements PostServiceInterface{
 		postDAO.deleteById(id);
 	}
 
-
 	public List<Post> findPostsByCreator(User creator) {
-
 		return postDAO.findPostsByCreator(creator);
 	}
-
-
-
+	
+	public Long getLikesByPost(Post post) {
+		return postDAO.countLikesByPost(post);
+	}
+	
 }

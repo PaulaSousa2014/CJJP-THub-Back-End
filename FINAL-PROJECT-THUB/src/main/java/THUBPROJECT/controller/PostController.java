@@ -46,12 +46,18 @@ public class PostController {
 		return postxID;
 	}
 	
+	// Get like count by post id
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/posts/{id}/likes/ammount")
+	public Long getLikeAmmountByPost(@PathVariable(name = "id") Post id) {
+		return postService.getLikesByPost(id);
+	}
+	
 	//Get all post by Creator
 	@PreAuthorize("hasRole('USER')")
-	@GetMapping("/posts/creator")
-	public List<Post> findPostsByCreator(@RequestBody  User creator)  {
-
-		return postService.findPostsByCreator(creator);
+	@GetMapping("/posts/creator/{id}")
+	public List<Post> findPostsByCreator(@PathVariable(name = "id") User id)  {
+		return postService.findPostsByCreator(id);
 	}
 
 	// Post Mappings

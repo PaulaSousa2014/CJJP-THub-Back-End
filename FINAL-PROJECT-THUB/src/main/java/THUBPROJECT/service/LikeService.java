@@ -40,8 +40,4 @@ public class LikeService implements LikeServiceInterface{
 		likeDAO.deleteById(id);
 	}
 	
-	public long numberOfLikes() {
-		return likeDAO.count();
-	}
-
 }

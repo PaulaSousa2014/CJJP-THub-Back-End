@@ -9,6 +9,4 @@ import THUBPROJECT.dto.Like;
 
 public interface LikeDAO extends JpaRepository<Like, Long> {
 	
-	
-
 }
