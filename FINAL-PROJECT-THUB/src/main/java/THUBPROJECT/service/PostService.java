@@ -55,7 +55,7 @@ public class PostService implements PostServiceInterface{
 	}
 	
 	public List<Comment> getCommentsByPostId(Long id) {
-		return postDAO.findCommentsByComments(id);
+		return postDAO.findCommentsByPostId(id);
 	}
 	
 }

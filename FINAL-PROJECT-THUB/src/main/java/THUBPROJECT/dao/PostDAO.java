@@ -23,6 +23,7 @@ public interface PostDAO extends JpaRepository<Post, Long> {
 	@Query("SELECT COUNT(c) FROM Comment c WHERE c.in_post = :post")
 	Long countCommentsByPost(@Param("post") Post post);
 	
-	List<Comment> findCommentsByComments(Long postId);
+	@Query("SELECT c FROM Comment c WHERE c.in_post.id = :postId")
+    List<Comment> findCommentsByPostId(@Param("postId") Long postId);
 
 }
