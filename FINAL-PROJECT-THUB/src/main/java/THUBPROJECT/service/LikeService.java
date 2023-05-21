@@ -39,5 +39,9 @@ public class LikeService implements LikeServiceInterface{
 	public void deleteLike(Long id) {
 		likeDAO.deleteById(id);
 	}
+	
+	public long numberOfLikes() {
+		return likeDAO.count();
+	}
 
 }

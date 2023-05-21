@@ -43,7 +43,13 @@ public class LikeController {
 
 		return likexID;
 	}
-
+	
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/likes/ammount")
+	public long numberOfLikes() {
+		return likeService.numberOfLikes();
+	}
+	
 	// Post Mappings
 	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/likes")

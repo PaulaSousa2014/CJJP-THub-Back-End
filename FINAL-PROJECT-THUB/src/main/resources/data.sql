@@ -206,7 +206,14 @@ INSERT INTO private_messages (content, sender, receiver) VALUES ('Message 4', 4,
 INSERT INTO posts (title, content, creator) VALUES ('I love Cats!', 'Cats are the best thing ever, I swear to god I have over 400 cats adopted already', 2);
 INSERT INTO posts (title, content, creator) VALUES ('Test', 'Testing', 3);
 
-INSERT INTO likes (user_liked, post_liked) VALUES (4, 1);
+INSERT INTO likes (user_liked, post_liked) VALUES
+	(4, 1),
+	(1, 1),
+	(2, 1),
+	(3, 1),
+	(1, 2),
+	(2, 2),
+	(4, 2);
 
 INSERT INTO comments (content, comment_by, in_post) VALUES 
 	('Theyre so cute! :D', 4, 1),
