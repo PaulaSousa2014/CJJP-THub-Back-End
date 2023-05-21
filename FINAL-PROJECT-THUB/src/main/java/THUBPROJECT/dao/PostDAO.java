@@ -17,11 +17,11 @@ public interface PostDAO extends JpaRepository<Post, Long> {
 	
 	List<Post> findPostsByCreator(User creator);
 	
-	@Query("SELECT COUNT(l) FROM Like l WHERE l.post_liked = :post")
-    Long countLikesByPost(@Param("post") Post post);
+	@Query("SELECT COUNT(l) FROM Like l WHERE l.post_liked.id = :postId")
+    Long countLikesByPostId(@Param("postId") Long postId);
 	
-	@Query("SELECT COUNT(c) FROM Comment c WHERE c.in_post = :post")
-	Long countCommentsByPost(@Param("post") Post post);
+	@Query("SELECT COUNT(c) FROM Comment c WHERE c.in_post.id = :postId")
+	Long countCommentsByPostId(@Param("postId") Long postId);
 	
 	@Query("SELECT c FROM Comment c WHERE c.in_post.id = :postId")
     List<Comment> findCommentsByPostId(@Param("postId") Long postId);

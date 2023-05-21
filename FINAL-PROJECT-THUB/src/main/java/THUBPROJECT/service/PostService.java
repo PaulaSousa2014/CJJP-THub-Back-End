@@ -46,12 +46,12 @@ public class PostService implements PostServiceInterface{
 		return postDAO.findPostsByCreator(creator);
 	}
 	
-	public Long getLikesByPost(Post post) {
-		return postDAO.countLikesByPost(post);
+	public Long getLikesByPostId(Long id) {
+		return postDAO.countLikesByPostId(id);
 	}
 	
-	public Long getCommentCountByPost(Post post) {
-		return postDAO.countCommentsByPost(post);
+	public Long getCommentCountByPostId(Long id) {
+		return postDAO.countCommentsByPostId(id);
 	}
 	
 	public List<Comment> getCommentsByPostId(Long id) {

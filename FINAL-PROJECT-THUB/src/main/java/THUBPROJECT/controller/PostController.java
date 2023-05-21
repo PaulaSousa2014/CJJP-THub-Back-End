@@ -49,8 +49,8 @@ public class PostController {
 	// Get like count by post id
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/posts/{id}/likes/ammount")
-	public Long getLikeAmmountByPost(@PathVariable(name = "id") Post id) {
-		return postService.getLikesByPost(id);
+	public Long getLikeAmmountByPostId(@PathVariable(name = "id") Long id) {
+		return postService.getLikesByPostId(id);
 	}
 
 	// Get all comments by Post
@@ -63,8 +63,8 @@ public class PostController {
 	// Get comment count by post id
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/posts/{id}/comments/ammount")
-	public Long getCommentAmmountByPost(@PathVariable(name = "id") Post id) {
-		return postService.getCommentCountByPost(id);
+	public Long getCommentAmmountByPostId(@PathVariable(name = "id") Long id) {
+		return postService.getCommentCountByPostId(id);
 	}
 
 	// Get all post by Creator
