@@ -81,7 +81,6 @@ CREATE TABLE IF NOT EXISTS private_messages (
 
 CREATE TABLE IF NOT EXISTS posts (
     id INT AUTO_INCREMENT,
-    title VARCHAR(100) NOT NULL,
     content VARCHAR(255) NOT NULL,
     creator INT NOT NULL,
     PRIMARY KEY (id),
@@ -203,8 +202,8 @@ INSERT INTO private_messages (content, sender, receiver) VALUES ('Message 2', 2,
 INSERT INTO private_messages (content, sender, receiver) VALUES ('Message 3', 3, 1);
 INSERT INTO private_messages (content, sender, receiver) VALUES ('Message 4', 4, 2);
 
-INSERT INTO posts (title, content, creator) VALUES ('I love Cats!', 'Cats are the best thing ever, I swear to god I have over 400 cats adopted already', 2);
-INSERT INTO posts (title, content, creator) VALUES ('Test', 'Testing', 3);
+INSERT INTO posts (content, creator) VALUES ('Cats are the best thing ever, I swear to god I have over 400 cats adopted already', 2);
+INSERT INTO posts (content, creator) VALUES ('Testing', 3);
 
 INSERT INTO likes (user_liked, post_liked) VALUES
 	(4, 1),

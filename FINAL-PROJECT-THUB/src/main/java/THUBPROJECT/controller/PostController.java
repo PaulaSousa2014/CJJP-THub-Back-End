@@ -85,7 +85,7 @@ public class PostController {
 	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/posts/{id}")
 	public Post updatePost(@PathVariable(name = "id") Long id, @RequestBody Post post) {
-		Post selectedPost = new Post(id, post.getTitle(), post.getContent(), post.getCreator());
+		Post selectedPost = new Post(id, post.getContent(), post.getCreator());
 		Post updatedPost = new Post();
 
 		updatedPost = postService.updatePost(selectedPost);

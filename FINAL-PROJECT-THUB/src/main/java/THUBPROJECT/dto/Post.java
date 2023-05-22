@@ -26,8 +26,6 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String title;
-
 	private String content;
 
 	@ManyToOne
@@ -44,9 +42,8 @@ public class Post {
 	public Post() {
 	}
 
-	public Post(Long id, String title, String content, User creator) {
+	public Post(Long id, String content, User creator) {
 		this.id = id;
-		this.title = title;
 		this.content = content;
 		this.creator = creator;
 	}
@@ -54,10 +51,6 @@ public class Post {
 	// Getters
 	public Long getId() {
 		return id;
-	}
-
-	public String getTitle() {
-		return title;
 	}
 
 	public String getContent() {
@@ -83,10 +76,6 @@ public class Post {
 	// Setters
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public void setContent(String content) {
