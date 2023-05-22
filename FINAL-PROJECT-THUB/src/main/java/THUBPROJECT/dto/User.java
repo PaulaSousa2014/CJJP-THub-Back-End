@@ -27,8 +27,11 @@ public class User {
 	private String email;
 	@Column(name = "name_surname")
 	private String nameSurn;
+	@Column(name = "profile_img")
+	private String profile_img;
 	@Column(name = "steam_username")
 	private String steam_username;
+	
 
 	@ManyToOne
 	@JoinColumn(name = "position")
@@ -96,7 +99,7 @@ public class User {
 		this.password = password;
 	}
 
-	public User(Long id, String username, String password, String email, String nameSurn, String steam_username,
+	public User(Long id, String username, String password, String email, String nameSurn, String profile_img, String steam_username,
 			Job job, Office office, Set<Role> roles) {
 		super();
 		this.id = id;
@@ -104,6 +107,7 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.nameSurn = nameSurn;
+		this.profile_img = profile_img;
 		this.steam_username = steam_username;
 		this.job = job;
 		this.office = office;
@@ -129,6 +133,10 @@ public class User {
 
 	public String getEmail() {
 		return email;
+	}
+	
+	public String getProfile_img() {
+		return profile_img;
 	}
 
 	public String getSteam_username() {
@@ -284,4 +292,8 @@ public class User {
 		this.msgsReceived = msgsReceived;
 	}
 
+	public void setProfile_img(String profile_img) {
+		this.profile_img = profile_img;
+	}
+	
 }
