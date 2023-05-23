@@ -16,6 +16,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import THUBPROJECT.service.UserDetailsServiceImpl;
 
@@ -60,6 +63,19 @@ public class WebSecurityConfig {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+	// CORS Configuration Bean
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.addAllowedOrigin("*"); // Allow all origins
+        configuration.addAllowedMethod("*"); // Allow all methods
+        configuration.addAllowedHeader("*"); // Allow all headers
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 
 	// Security Filter Chain
 	@Bean
@@ -67,6 +83,8 @@ public class WebSecurityConfig {
 		http.csrf().disable()
 	    .sessionManagement()
 	        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+	        .and()
+	        .cors()
 	        .and()
 	    .authorizeHttpRequests()
 	        .requestMatchers("/auth/**").permitAll()
@@ -79,4 +97,5 @@ public class WebSecurityConfig {
 
 		return http.build();
 	}
+	
 }
