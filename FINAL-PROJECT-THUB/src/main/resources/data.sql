@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS private_messages (
 CREATE TABLE IF NOT EXISTS posts (
     id INT AUTO_INCREMENT,
     content VARCHAR(255) NOT NULL,
+    time_submitted DATETIME DEFAULT CURRENT_TIMESTAMP,
     creator INT NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT FK_posts_creator FOREIGN KEY (creator) REFERENCES users(id)
@@ -100,6 +101,7 @@ CREATE TABLE IF NOT EXISTS likes (
 CREATE TABLE IF NOT EXISTS comments (
 	id INT AUTO_INCREMENT,
     content VARCHAR(255) NOT NULL,
+    time_submitted DATETIME DEFAULT CURRENT_TIMESTAMP,
     comment_by INT NOT NULL,
     in_post INT NOT NULL,
     PRIMARY KEY (id),

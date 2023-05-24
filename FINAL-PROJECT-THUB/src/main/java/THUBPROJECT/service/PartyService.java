@@ -37,6 +37,10 @@ public class PartyService implements PartyServiceInterface {
 		return partyDAO.findPartiesByGameTitleContaining(title);
 	}
 	
+	public List<Party> listPartiesByCreatorId(Long creatorId) {
+		return partyDAO.findPartiesByCreatorId(creatorId);
+	}
+	
 
 	public List<Party> findPartiesBySocialThemeContaining(String theme) {
 		

@@ -3,6 +3,9 @@
  */
 package THUBPROJECT.dto;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "comments")
@@ -22,6 +27,10 @@ public class Comment {
 
 	private String content;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "time_submitted")
+	private LocalDateTime time_submitted;
+
 	@ManyToOne
 	@JoinColumn(name = "comment_by")
 	private User comment_by;
@@ -31,13 +40,13 @@ public class Comment {
 	private Post in_post;
 
 	// Constructors
-
 	public Comment() {
 	}
 
 	public Comment(Long id, String content, User comment_by, Post in_post) {
 		this.id = id;
 		this.content = content;
+		this.time_submitted = LocalDateTime.now();
 		this.comment_by = comment_by;
 		this.in_post = in_post;
 	}
@@ -49,6 +58,10 @@ public class Comment {
 
 	public String getContent() {
 		return content;
+	}
+
+	public LocalDateTime getTime_submitted() {
+		return time_submitted;
 	}
 
 	public User getComment_by() {
@@ -66,6 +79,10 @@ public class Comment {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public void setTime_submitted(LocalDateTime time_submitted) {
+		this.time_submitted = time_submitted;
 	}
 
 	public void setComment_by(User comment_by) {

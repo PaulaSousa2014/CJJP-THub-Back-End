@@ -30,8 +30,6 @@ public class PartyController {
 	public List<Party> listParties() {
 		return partyService.listParties();
 	}
-	
-	
 
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/{id}")
@@ -44,41 +42,47 @@ public class PartyController {
 	}
 
 	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/parties/creator/{creatorId}")
+	public List<Party> partiesByCreatorId(@PathVariable(name = "creatorId") Long creatorId) {
+		return partyService.listPartiesByCreatorId(creatorId);
+	}
+
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/game/{gameId}")
 	public List<Party> listPartiesByGameId(@PathVariable(name = "gameId") Long gameId) {
 		return partyService.listPartiesByGameId(gameId);
 	}
-	
+
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/activity/{activityId}")
-	public List<Party> listPartiesByActivityId(@PathVariable(name = "activityId")Long activityId){
+	public List<Party> listPartiesByActivityId(@PathVariable(name = "activityId") Long activityId) {
 		return partyService.listPartiesByActivityId(activityId);
 	}
-	
+
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/social/{socialId}")
-	public List<Party> listPartiesBySocialId(@PathVariable(name = "socialId")Long socialId){
+	public List<Party> listPartiesBySocialId(@PathVariable(name = "socialId") Long socialId) {
 		return partyService.listPartiesBySocialId(socialId);
 	}
-	
-	//Find parties by game title
+
+	// Find parties by game title
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/game/title/{gameTitle}")
-	public List<Party> listPartiesByGameTitleContaining(@PathVariable(name = "gameTitle")String gameTitle){
+	public List<Party> listPartiesByGameTitleContaining(@PathVariable(name = "gameTitle") String gameTitle) {
 		return partyService.listPartiesByGameTitleContaining(gameTitle);
 	}
-	
-	//Find parties by social theme
+
+	// Find parties by social theme
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/social/theme/{theme}")
-	public List<Party> listPartiesBySocialThemeContaining(@PathVariable(name = "theme")String theme){
+	public List<Party> listPartiesBySocialThemeContaining(@PathVariable(name = "theme") String theme) {
 		return partyService.findPartiesBySocialThemeContaining(theme);
 	}
-	
-	//Find parties by activity type
+
+	// Find parties by activity type
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/parties/activity/type/{type}")
-	public List<Party> listPartiesByActivityTypeContaining(@PathVariable(name = "type")String type){
+	public List<Party> listPartiesByActivityTypeContaining(@PathVariable(name = "type") String type) {
 		return partyService.findPartiesByActivityTypeContaining(type);
 	}
 
