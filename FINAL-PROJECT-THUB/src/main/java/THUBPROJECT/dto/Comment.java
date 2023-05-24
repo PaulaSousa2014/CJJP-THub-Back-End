@@ -41,6 +41,7 @@ public class Comment {
 
 	// Constructors
 	public Comment() {
+		this.time_submitted = LocalDateTime.now();
 	}
 
 	public Comment(Long id, String content, User comment_by, Post in_post) {

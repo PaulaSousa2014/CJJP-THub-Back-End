@@ -26,7 +26,9 @@ public class PrivMessage {
 	private User receiver;
 	
 	// Constructors
-	public PrivMessage() {}
+	public PrivMessage() {
+		this.timestamp = LocalDateTime.now();
+	}
 	
 	public PrivMessage(Long id, String content, User sender, User receiver) {
 		this.id = id;

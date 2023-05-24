@@ -48,6 +48,7 @@ public class Post {
 
 	// Constructors
 	public Post() {
+		this.time_submitted = LocalDateTime.now();
 	}
 
 	public Post(Long id, String content, User creator) {

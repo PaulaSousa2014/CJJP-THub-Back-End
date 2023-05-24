@@ -55,7 +55,7 @@ public class Message {
 	}
 
 	public Message() {
-
+		this.timeSent = LocalDateTime.now();
 	}
 
 	// Getters
