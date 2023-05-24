@@ -43,7 +43,7 @@ public class FriendController {
 	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/friends/{id}")
 	public Friend updateUser(@PathVariable(name = "id") Long id, @RequestBody Friend friend) {
-		Friend selectedFriend = new Friend(id, friend.getUserSender(), friend.getUserReciever());
+		Friend selectedFriend = new Friend(id, friend.isStatus(), friend.getUserSender(), friend.getUserReciever());
 		Friend updatedFriend = new Friend();
 
 		updatedFriend = friendService.updateFriend(selectedFriend);

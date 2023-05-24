@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS user_roles (
 
 CREATE TABLE IF NOT EXISTS friend_requests (
     id INT AUTO_INCREMENT,
+    status BOOLEAN DEFAULT FALSE,
     sender_request INT NOT NULL,
     receiver_request INT NOT NULL,
     PRIMARY KEY (id),
