@@ -95,6 +95,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.profile_img = "../../../assets/img/avatars/cat0.jpg";
+		this.nameSurn = username;
 	}
 
 	public User(Long id, String username, String password, String email, String nameSurn, String profile_img,
