@@ -17,10 +17,12 @@ public class PartyMemberListService implements PartyMemberListServiceInterface{
 		PartyMemberListDAO partyMemberListDAO;
 
 		// CRUD functions
+		
 		public List<PartyMemberList> listPartyMemberLists() {
 			return partyMemberListDAO.findAll();
 		}
 
+		//Get parties by userId
 		public List<PartyMemberList> listPartiesByUserId(Long userId) {
 			return partyMemberListDAO.findPartiesByUserId(userId);
 		}

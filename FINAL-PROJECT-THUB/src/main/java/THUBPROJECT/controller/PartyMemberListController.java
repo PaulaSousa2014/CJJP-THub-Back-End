@@ -31,6 +31,7 @@ public class PartyMemberListController {
 		return partyMemberListService.listPartyMemberLists();
 	}
 
+	
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/party_members/{id}")
 	public PartyMemberList party_MemberById(@PathVariable(name = "id") Long id) {
