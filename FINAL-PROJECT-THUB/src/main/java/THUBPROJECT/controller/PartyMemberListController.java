@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import THUBPROJECT.dto.PartyMemberList;
+import THUBPROJECT.dto.User;
 import THUBPROJECT.service.PartyMemberListService;
+import THUBPROJECT.service.PartyService;
+import THUBPROJECT.service.UserService;
+import jakarta.resource.ResourceException;
 
 @RestController // Rest controller
 @RequestMapping("/api")
@@ -23,6 +28,10 @@ public class PartyMemberListController {
 	// Implement service
 	@Autowired
 	PartyMemberListService partyMemberListService;
+	@Autowired
+	UserService userService;
+	@Autowired
+	PartyService partyService;
 
 	// Get Mappings
 	@PreAuthorize("hasRole('USER')")
@@ -61,6 +70,23 @@ public class PartyMemberListController {
 		return partyMemberListService.savePartyMemberList(partyMemberList);
 	}
 	
+	// Post Mappings
+	@PreAuthorize("hasRole('USER')")
+	@PostMapping("/party_members/{party_id}/{user_id}")
+	public PartyMemberList savePartyMemberListNew(@PathVariable(name = "party_id") Long party_id, @PathVariable(name = "user_id") Long user_id) {
+		
+		
+		
+		PartyMemberList partyList = new PartyMemberList();
+		partyList.setUser(userService.userById(user_id));
+		partyList.setParty(partyService.partyById(party_id));
+		
+	
+		return partyMemberListService.updatePartyMemberList(partyList);
+		
+
+	}
+	
 	// Put Mappings
 	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/party_members/{party_members_id}")
@@ -74,6 +100,9 @@ public class PartyMemberListController {
 
 		return updatedList;
 	}
+	
+
+
 
 	// Delete Mappings
 	@PreAuthorize("hasRole('ADMIN')")
