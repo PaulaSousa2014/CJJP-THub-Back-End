@@ -49,7 +49,7 @@ public class UserController {
 	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/users/{id}")
 	public User updateAllUser(@PathVariable(name = "id") Long id, @RequestBody User user) {
-		User selectedUser = new User(id, user.getUsername(), encoder.encode(user.getPassword()), user.getEmail(),
+		User selectedUser = new User(id, user.getUsername(), user.getPassword(), user.getEmail(),
 				user.getNameSurn(), user.getProfile_img(), user.getSteam_username(), user.getJob(), user.getOffice(), user.getRoles());
 		User updatedUser = new User();
 
