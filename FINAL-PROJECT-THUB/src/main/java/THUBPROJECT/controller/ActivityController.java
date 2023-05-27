@@ -14,50 +14,51 @@ import THUBPROJECT.service.ActivityService;
 public class ActivityController {
 
 	// Implement service
-		@Autowired
-		ActivityService activityService;
+	@Autowired
+	ActivityService activityService;
 
-		// Get all activities
-		@PreAuthorize("hasRole('USER')")
-		@GetMapping("/activities")
-		public List<Activity> listActivities() {
-			return activityService.listActivities();
-		}
+	// Get all activities
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/activities")
+	public List<Activity> listActivities() {
+		return activityService.listActivities();
+	}
 
-		//Get activities by ID
-		@PreAuthorize("hasRole('USER')")
-		@GetMapping("/activities/{id}")
-		public Activity activityById(@PathVariable(name = "id") Long id) {
-			Activity activityxID = new Activity();
+	// Get activities by ID
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/activities/{id}")
+	public Activity activityById(@PathVariable(name = "id") Long id) {
+		Activity activityxID = new Activity();
 
-			activityxID = activityService.activityById(id);
+		activityxID = activityService.activityById(id);
 
-			return activityxID;
-		}
+		return activityxID;
+	}
 
-		// Post activity
-		@PreAuthorize("hasRole('USER')")
-		@PostMapping("/activities")
-		public Activity saveActivity(@RequestBody Activity activity) {
-			return activityService.saveActivity(activity);
-		}
+	// Post activity
+	@PreAuthorize("hasRole('ADMIN')")
+	@PostMapping("/activities")
+	public Activity saveActivity(@RequestBody Activity activity) {
+		return activityService.saveActivity(activity);
+	}
 
-		// Put activities by id 
-		@PreAuthorize("hasRole('USER')")
-		@PutMapping("/activities/{id}")
-		public Activity updateActivity(@PathVariable(name = "id") Long id, @RequestBody Activity activity) {
-			Activity selectedActivity = new Activity(id, activity.getTitle(), activity.getDescription(), activity.getType());
-			Activity updatedActivity = new Activity();
+	// Put activities by id
+	@PreAuthorize("hasRole('ADMIN')")
+	@PutMapping("/activities/{id}")
+	public Activity updateActivity(@PathVariable(name = "id") Long id, @RequestBody Activity activity) {
+		Activity selectedActivity = new Activity(id, activity.getTitle(), activity.getDescription(),
+				activity.getType());
+		Activity updatedActivity = new Activity();
 
-			updatedActivity = activityService.updateActivity(selectedActivity);
-			return updatedActivity;
-		}
+		updatedActivity = activityService.updateActivity(selectedActivity);
+		return updatedActivity;
+	}
 
-		// Delete Activities by id 
-		@PreAuthorize("hasRole('USER')")
-		@DeleteMapping("/activities/{id}")
-		public void deleteActivity(@PathVariable(name = "id") Long id) {
-			activityService.deleteActivity(id);
-		}
+	// Delete Activities by id
+	@PreAuthorize("hasRole('ADMIN')")
+	@DeleteMapping("/activities/{id}")
+	public void deleteActivity(@PathVariable(name = "id") Long id) {
+		activityService.deleteActivity(id);
+	}
 
 }

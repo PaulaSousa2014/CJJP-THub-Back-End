@@ -54,16 +54,6 @@ public class PrivMessageController {
 		return privMessageService.savePrivMessage(privMessage);
 	}
 
-	// Put Mappings
-	@PreAuthorize("hasRole('USER')")
-	@PutMapping("/privMessages/{id}")
-	public PrivMessage updatePrivMessage(@PathVariable(name = "id") Long id, @RequestBody PrivMessage privMessage) {
-		PrivMessage selectedPrivMessage = new PrivMessage(id, privMessage.getContent(), privMessage.getSender(), privMessage.getReceiver());
-		PrivMessage updatedPrivMessage = new PrivMessage();
-		updatedPrivMessage = privMessageService.updatePrivMessage(selectedPrivMessage);
-		return updatedPrivMessage;
-	}
-
 	// Delete Mappings
 	@PreAuthorize("hasRole('USER')")
 	@DeleteMapping("/privMessages/{id}")

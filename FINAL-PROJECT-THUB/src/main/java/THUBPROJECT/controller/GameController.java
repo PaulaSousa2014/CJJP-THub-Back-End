@@ -47,14 +47,14 @@ public class GameController {
 	}
 
 	// Post Mappings
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/games")
 	public Game saveGame(@RequestBody Game game) {
 		return gameService.saveGame(game);
 	}
 
 	// Put game by ID
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/games/{id}")
 	public Game updateGame(@PathVariable(name = "id") Long id, @RequestBody Game game) {
 		Game selectedGame = new Game(id, game.getTitle(), game.getDescription(), game.getPlaytime());
@@ -65,7 +65,7 @@ public class GameController {
 	}
 
 	// Delete game by ID
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/games/{id}")
 	public void deleteGame(@PathVariable(name = "id") Long id) {
 		gameService.deleteGame(id);

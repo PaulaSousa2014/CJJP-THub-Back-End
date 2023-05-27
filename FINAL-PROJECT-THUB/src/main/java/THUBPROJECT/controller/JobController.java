@@ -34,7 +34,7 @@ public class JobController {
 		return jobService.listJobs();
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/jobs/{id}")
 	public Job jobById(@PathVariable(name = "id") Long id) {
 		Job jobxID = new Job();

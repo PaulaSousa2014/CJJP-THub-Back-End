@@ -34,7 +34,7 @@ public class OfficeController {
 		return officeService.listOffices();
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/offices/{id}")
 	public Office officeById(@PathVariable(name = "id") Long id) {
 		Office officexID = new Office();

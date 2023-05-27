@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import THUBPROJECT.dto.Like;
-import THUBPROJECT.dto.PartyMemberList;
 import THUBPROJECT.service.LikeService;
 import THUBPROJECT.service.PostService;
 import THUBPROJECT.service.UserService;
@@ -50,36 +48,25 @@ public class LikeController {
 
 		return likexID;
 	}
-	
+
 	// Post Mappings
 	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/likes")
 	public Like saveLike(@RequestBody Like like) {
 		return likeService.saveLike(like);
 	}
-	
+
 	// Post Mappings add like by post_id & user_id
 	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/likes/{post_id}/{user_id}")
 	public Like newLike(@PathVariable(name = "post_id") Long post_id, @PathVariable(name = "user_id") Long user_id) {
-		
+
 		Like likes = new Like();
 		likes.setUser_liked(userService.userById(user_id));
 		likes.setPost_liked(postService.postById(post_id));
-		
+
 		return likeService.updateLike(likes);
-		
-	}
 
-	// Put Mappings
-	@PreAuthorize("hasRole('USER')")
-	@PutMapping("/likes/{id}")
-	public Like updateLike(@PathVariable(name = "id") Long id, @RequestBody Like like) {
-		Like selectedLike = new Like(id, like.getUser_liked(), like.getPost_liked());
-		Like updatedLike = new Like();
-
-		updatedLike = likeService.updateLike(selectedLike);
-		return updatedLike;
 	}
 
 	// Delete Mappings
