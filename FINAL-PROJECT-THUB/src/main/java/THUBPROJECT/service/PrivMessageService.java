@@ -38,14 +38,15 @@ public class PrivMessageService implements PrivMessageServiceInterface{
 
 
 	public List<PrivMessage> findPrivMessageBySender(User sender) {
-
 		return privMessageDAO.findPrivMessageBySender(sender);
 	}
 
-
 	public List<PrivMessage> findPrivMessageByReceiver(User receiver) {
-
 		return privMessageDAO.findPrivMessageByReceiver(receiver);
+	}
+	
+	public List<PrivMessage> listConversationMessages(Long senderId, Long receiverId) {
+		return privMessageDAO.findPrivMessageBySenderAndReceiver(senderId, receiverId);
 	}
 
 }

@@ -19,12 +19,14 @@ public class PrivMessageController {
 	PrivMessageService privMessageService;
 
 	// Get Mappings
+	// Get all messages
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/privMessages")
 	public List<PrivMessage> listPrivMessages() {
 		return privMessageService.listprivMessages();
 	}
 
+	// Get message by Id
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/privMessages/{id}")
 	public PrivMessage privMessageById(@PathVariable(name = "id") Long id) {
@@ -32,7 +34,8 @@ public class PrivMessageController {
 		privMessagesxID = privMessageService.privMessageById(id);
 		return privMessagesxID;
 	}
-	
+
+	// Get all messages by sender
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/privMessages/sender")
 	public List<PrivMessage> findPrivMessageBySender(@RequestBody User sender) {
@@ -40,11 +43,20 @@ public class PrivMessageController {
 		return privMessageService.findPrivMessageBySender(sender);
 	}
 
+	// Get all messages from receiver
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/privMessages/receiver")
 	public List<PrivMessage> findPrivMessageByReceiver(@RequestBody User receiver) {
-
 		return privMessageService.findPrivMessageByReceiver(receiver);
+	}
+
+	// Get conversation between sender and receiver
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/privMessages/sender/{sId}/receiver/{rId}")
+	public List<PrivMessage> findPrivMessageByReceiver(
+			@PathVariable("sId") Long senderId,
+			@PathVariable("rId") Long receiverId) {
+		return privMessageService.listConversationMessages(senderId, receiverId);
 	}
 
 	// Post Mappings
@@ -62,4 +74,3 @@ public class PrivMessageController {
 	}
 
 }
-
