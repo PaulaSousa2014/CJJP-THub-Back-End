@@ -47,6 +47,40 @@ public class PartyMemberListService implements PartyMemberListServiceInterface{
 		public void deletePartyMemberList(Long id) {
 			partyMemberListDAO.deleteById(id);
 		}
+		
+		
+			
+		
+		public Long findPartyMemberIdByUserIdAndPartyId(Long userId, Long partyId) {
+		    PartyMemberList partyMember = partyMemberListDAO.findPartyMembersByUserIdAndPartyId(userId, partyId);
+		    if (partyMember != null) {
+		        return partyMember.getId();
+		    } else {
+		        return null;
+		    }
+		}
+
+		
+
+
+
+		public PartyMemberList findPartyMembersByUserIdAndPartyId(Long userId, Long partyId) {
+	
+		    
+		    PartyMemberList partyMembersList = partyMemberListDAO.findPartyMembersByUserIdAndPartyId(userId, partyId);
+		    
+		    if (partyMembersList != null) {
+
+		    	return partyMembersList;
+		    } else {
+
+		    	return null;
+		    }
+		}
+
+
+
+		
 
 
 

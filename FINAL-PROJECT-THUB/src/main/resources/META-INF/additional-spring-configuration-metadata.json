@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "THUB.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'THUB.jwtSecret'"
+  },
+  {
+    "name": "THUB.jwtExpirationMs",
+    "type": "java.lang.String",
+    "description": "A description for 'THUB.jwtExpirationMs'"
+  },
+  {
+    "name": "THUB.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'THUB.jwtSecret'"
+  }
+]}
