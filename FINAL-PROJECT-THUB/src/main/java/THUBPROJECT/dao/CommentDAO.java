@@ -12,7 +12,7 @@ import THUBPROJECT.dto.Comment;
 
 public interface CommentDAO extends JpaRepository<Comment, Long> {
 	
-	@Query("SELECT c FROM Comment c WHERE c.in_post.id = :postId")
+	@Query("SELECT c FROM Comment c WHERE c.in_post.id = :postId ORDER BY c.time_submitted DESC")
 	List<Comment> findByInPostId(Long postId);
 
 }
