@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import THUBPROJECT.dto.Like;
+import THUBPROJECT.dto.PartyMemberList;
 import THUBPROJECT.service.LikeService;
+import THUBPROJECT.service.PostService;
+import THUBPROJECT.service.UserService;
 
 @RestController // Rest controller
 @RequestMapping("/api")
@@ -26,6 +29,10 @@ public class LikeController {
 	// Implement service
 	@Autowired
 	LikeService likeService;
+	@Autowired
+	UserService userService;
+	@Autowired
+	PostService postService;
 
 	// Get Mappings
 	@PreAuthorize("hasRole('USER')")
@@ -49,6 +56,19 @@ public class LikeController {
 	@PostMapping("/likes")
 	public Like saveLike(@RequestBody Like like) {
 		return likeService.saveLike(like);
+	}
+	
+	// Post Mappings add like by post_id & user_id
+	@PreAuthorize("hasRole('USER')")
+	@PostMapping("/likes/{post_id}/{user_id}")
+	public Like newLike(@PathVariable(name = "post_id") Long post_id, @PathVariable(name = "user_id") Long user_id) {
+		
+		Like likes = new Like();
+		likes.setUser_liked(userService.userById(user_id));
+		likes.setPost_liked(postService.postById(post_id));
+		
+		return likeService.updateLike(likes);
+		
 	}
 
 	// Put Mappings
