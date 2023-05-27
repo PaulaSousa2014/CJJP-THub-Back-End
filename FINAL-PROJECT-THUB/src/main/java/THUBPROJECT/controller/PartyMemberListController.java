@@ -56,6 +56,18 @@ public class PartyMemberListController {
 	public List<PartyMemberList> listPartiesByUserId(@PathVariable(name = "userId") Long userId) {
 		return partyMemberListService.listPartiesByUserId(userId);
 	}
+	
+	// Get party_member_id by user_id & party_id
+	@PreAuthorize("hasRole('USER')")
+	@GetMapping("/party_members/id/{partyId}/{userId}")
+	public Long findPartyMemberId(@PathVariable(name = "userId") Long userId, @PathVariable(name = "partyId") Long partyId) {
+	    Long partyMemberId = partyMemberListService.findPartyMemberIdByUserIdAndPartyId(userId, partyId);
+	    return partyMemberId;
+	}
+
+	
+	
+	
 
 	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/party_members/party/{partyId}")
@@ -70,21 +82,17 @@ public class PartyMemberListController {
 		return partyMemberListService.savePartyMemberList(partyMemberList);
 	}
 	
-	// Post Mappings
+	// Post Mappings Join a party by party_id & user_id
 	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/party_members/{party_id}/{user_id}")
 	public PartyMemberList savePartyMemberListNew(@PathVariable(name = "party_id") Long party_id, @PathVariable(name = "user_id") Long user_id) {
-		
-		
 		
 		PartyMemberList partyList = new PartyMemberList();
 		partyList.setUser(userService.userById(user_id));
 		partyList.setParty(partyService.partyById(party_id));
 		
-	
 		return partyMemberListService.updatePartyMemberList(partyList);
 		
-
 	}
 	
 	// Put Mappings
@@ -106,8 +114,11 @@ public class PartyMemberListController {
 
 	// Delete Mappings
 	@PreAuthorize("hasRole('ADMIN')")
-	@DeleteMapping("/party_members/{id}")
-	public void deletePartyMemberList(@PathVariable(name = "id") Long id) {
+	@DeleteMapping("/party_members/{party_id}")
+	public void deletePartyMemberList(@PathVariable(name = "party_id") Long id) {
+		
 		partyMemberListService.deletePartyMemberList(id);
 	}
+	
+	
 }

@@ -11,5 +11,11 @@ public interface PartyMemberListDAO extends JpaRepository<PartyMemberList, Long>
 	List<PartyMemberList> findPartiesByUserId(Long userId);
 
 	List<PartyMemberList> findUsersByPartyId(Long partyId);
+	
+	PartyMemberList findPartyMembersByUserIdAndPartyId(Long userId, Long partyId);
+	
+	Long findPartyMemberIdByUserIdAndPartyId(Long userId, Long partyId);
+
+
 
 }
