@@ -77,8 +77,8 @@ CREATE TABLE IF NOT EXISTS private_messages (
     sender INT NOT NULL,
     receiver INT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT FK_private_messages_sender FOREIGN KEY (sender) REFERENCES users(id),
-    CONSTRAINT FK_private_messages_receiver FOREIGN KEY (receiver) REFERENCES users(id)
+    CONSTRAINT FK_private_messages_sender FOREIGN KEY (sender) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_private_messages_receiver FOREIGN KEY (receiver) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS posts (
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS posts (
     time_submitted DATETIME DEFAULT CURRENT_TIMESTAMP,
     creator INT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT FK_posts_creator FOREIGN KEY (creator) REFERENCES users(id)
+    CONSTRAINT FK_posts_creator FOREIGN KEY (creator) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS likes (
@@ -95,8 +95,8 @@ CREATE TABLE IF NOT EXISTS likes (
     user_liked INT NOT NULL,
     post_liked INT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT FK_likes_user FOREIGN KEY (user_liked) REFERENCES users(id),
-    CONSTRAINT FK_likes_post FOREIGN KEY (post_liked) REFERENCES posts(id)
+    CONSTRAINT FK_likes_user FOREIGN KEY (user_liked) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FK_likes_post FOREIGN KEY (post_liked) REFERENCES posts(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS comments (
@@ -106,8 +106,8 @@ CREATE TABLE IF NOT EXISTS comments (
     comment_by INT NOT NULL,
     in_post INT NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT FK_comments_user FOREIGN KEY (comment_by) REFERENCES users(id),
-	CONSTRAINT FK_comments_post FOREIGN KEY (in_post) REFERENCES posts(id)
+    CONSTRAINT FK_comments_user FOREIGN KEY (comment_by) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT FK_comments_post FOREIGN KEY (in_post) REFERENCES posts(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS socials (
