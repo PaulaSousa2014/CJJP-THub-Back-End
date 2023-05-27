@@ -41,6 +41,12 @@ public class CommentController {
 
 		return commentxID;
 	}
+	
+	@GetMapping("/comments/post/{id}")
+	public List<Comment> commentsByPostId(@PathVariable(name = "id") Long id) {
+		return commentService.listCommentsByPostId(id);
+	}
+	
 
 	// Post Mappings
 	@PreAuthorize("hasRole('USER')")

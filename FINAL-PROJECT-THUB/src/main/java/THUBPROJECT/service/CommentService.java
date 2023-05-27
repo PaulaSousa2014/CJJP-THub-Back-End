@@ -39,5 +39,9 @@ public class CommentService implements CommentServiceInterface{
 	public void deleteComment(Long id) {
 		commentDAO.deleteById(id);
 	}
+	
+	public List<Comment> listCommentsByPostId(Long id) {
+		return commentDAO.findByInPostId(id);
+	}
 
 }
