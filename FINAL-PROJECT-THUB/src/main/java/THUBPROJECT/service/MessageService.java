@@ -26,6 +26,10 @@ public class MessageService implements MessageServiceInterface{
 	public List<Message> listMessagesByPartyId(Long partyId) {
 		return messageDAO.findMessagesByPartyId(partyId);
 	}
+	
+	public List<Message> listMostRecentMessagesByPartyId(Long partyId) {
+		return messageDAO.findMostRecentMessagesByPartyId(partyId);
+	}
 
 	public Message saveMessage(Message message) {
 		return messageDAO.save(message);
