@@ -193,10 +193,10 @@ INSERT INTO roles (name) VALUES
 	('ROLE_ADMIN');
 
 INSERT INTO users (username, password, email, name_surname, steam_username, position, office) VALUES 
-	('javier', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'javi@javi.com', 'JAVIER PÉREZ', 'javisteam', 1, 1),
-	('camila', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'cami@cami.com', 'CAMILA GARCIA', 'camisteam', 1, 1),
-	('josep', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'jose@jose.com', 'JOSEP MARIA PALLÀS','josesteam', 2, 2),
-	('paula', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'pauli@pauli.com','PAULA SOUSA', 'paulisteam', 2, 2);
+	('javier', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'javi@javi.com', 'Javier Pérez', 'javisteam', 1, 1),
+	('camila', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'cami@cami.com', 'Camila Garcia', 'camisteam', 1, 1),
+	('josep', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'jose@jose.com', 'Josep Maria Pallàs','josesteam', 2, 2),
+	('paula', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'pauli@pauli.com','Paula Sousa', 'paulisteam', 2, 2);
 	
 INSERT INTO users (username, password, email) VALUES 
 	('testUser','$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS','testUser@test.com');
