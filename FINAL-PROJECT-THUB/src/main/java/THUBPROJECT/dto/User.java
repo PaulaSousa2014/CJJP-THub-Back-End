@@ -28,6 +28,8 @@ public class User {
 	private String nameSurn;
 	@Column(name = "profile_img")
 	private String profile_img;
+	@Column(name = "biography")
+	private String biography;
 	@Column(name = "steam_username")
 	private String steam_username;
 
@@ -78,13 +80,14 @@ public class User {
 	public User() {
 	}
 
-	public User(Long id, String username, String password, String email, String nameSurn, String steam_username,
-			Job job, Office office) {
+	public User(Long id, String username, String password, String email, String nameSurn, String biography,
+			String steam_username, Job job, Office office) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.nameSurn = nameSurn;
+		this.biography = biography;
 		this.steam_username = steam_username;
 		this.job = job;
 		this.office = office;
@@ -99,7 +102,7 @@ public class User {
 	}
 
 	public User(Long id, String username, String password, String email, String nameSurn, String profile_img,
-			String steam_username, Job job, Office office, Set<Role> roles) {
+			String biography, String steam_username, Job job, Office office, Set<Role> roles) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -107,6 +110,7 @@ public class User {
 		this.email = email;
 		this.nameSurn = nameSurn;
 		this.profile_img = profile_img;
+		this.biography = biography;
 		this.steam_username = steam_username;
 		this.job = job;
 		this.office = office;
@@ -214,6 +218,10 @@ public class User {
 		return roles;
 	}
 
+	public String getBiography() {
+		return biography;
+	}
+
 	// Setters
 	public void setId(Long id) {
 		this.id = id;
@@ -293,6 +301,10 @@ public class User {
 
 	public void setProfile_img(String profile_img) {
 		this.profile_img = profile_img;
+	}
+
+	public void setBiography(String biography) {
+		this.biography = biography;
 	}
 
 }

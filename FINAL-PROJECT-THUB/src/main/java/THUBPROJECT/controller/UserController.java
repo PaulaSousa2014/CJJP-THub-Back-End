@@ -50,7 +50,7 @@ public class UserController {
 	@PutMapping("/users/{id}")
 	public User updateAllUser(@PathVariable(name = "id") Long id, @RequestBody User user) {
 		User selectedUser = new User(id, user.getUsername(), user.getPassword(), user.getEmail(), user.getNameSurn(),
-				user.getProfile_img(), user.getSteam_username(), user.getJob(), user.getOffice(), user.getRoles());
+				user.getProfile_img(), user.getBiography(), user.getSteam_username(), user.getJob(), user.getOffice(), user.getRoles());
 		User updatedUser = new User();
 
 		updatedUser = userService.updateUser(selectedUser);
@@ -78,6 +78,9 @@ public class UserController {
 		}
 		if (user.getProfile_img() != null) {
 			selectedUser.setProfile_img(user.getProfile_img());
+		}
+		if (user.getBiography() != null) {
+			selectedUser.setBiography(user.getBiography());
 		}
 		if (user.getSteam_username() != null) {
 			selectedUser.setSteam_username(user.getSteam_username());

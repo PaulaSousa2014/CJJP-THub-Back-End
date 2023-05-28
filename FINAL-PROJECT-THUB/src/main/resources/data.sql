@@ -42,6 +42,7 @@ password VARCHAR(255) NOT NULL,
 email VARCHAR(255) UNIQUE NOT NULL,
 name_surname VARCHAR(255) DEFAULT NULL,
 profile_img VARCHAR(255) DEFAULT '../../../assets/img/avatars/cat0.jpg',
+biography VARCHAR(255) DEFAULT NULL,
 steam_username VARCHAR(255) DEFAULT NULL,
 position INT DEFAULT NULL,
 office INT DEFAULT NULL,
@@ -172,12 +173,19 @@ CREATE TABLE IF NOT EXISTS messages (
 );
 
 INSERT INTO jobs (title, description) VALUES 
-	('Front-End Developer', 'Creative bois'),
- 	('Back-End Developer', 'Raging bois');
+	('Front-End Developer', 'The creative bois'),
+ 	('Back-End Developer', 'The thinkey bois'),
+ 	('Full-Stack Developer', 'The complete package'),
+ 	('Director', 'The one above all'),
+ 	('Secretary', 'Calls are echausting'),
+ 	('Project Manager', 'Managing intensifies'),
+ 	('Director', 'The one above all'),
+ 	('Administrative', 'Calc ya later');
 
 INSERT INTO offices (name, location) VALUES 
-	('REDESSA', 'Somewhere in Reus around the cinemas lol'),
-	('TSystems', 'Close to the hospital, still being built it seems');
+	('REDESSA Tecno, Reus', 'Av. de Bellissens, 40, 43204 Reus, Tarragona'),
+	('T-Systems Reus', 'Carrer del Camí de Valls, 81-87, 43204 Reus, Tarragona'),
+	('T-Systems Barcelona', 'C/ de Pere IV, 313, 08020 Barcelona');
 
 INSERT INTO roles (name) VALUES 
 	('ROLE_USER'),
@@ -189,8 +197,8 @@ INSERT INTO users (username, password, email, name_surname, steam_username, posi
 	('camila', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'cami@cami.com', 'CAMILA GARCIA', 'camisteam', 1, 1),
 	('josep', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'jose@jose.com', 'JOSEP MARIA PALLÀS','josesteam', 2, 2),
 	('paula', '$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS', 'pauli@pauli.com','PAULA SOUSA', 'paulisteam', 2, 2);
-
-INSERT INTO users (username, password, email) VALUES 	
+	
+INSERT INTO users (username, password, email) VALUES 
 	('testUser','$2a$10$mR4MU5esBbUd6JWuwWKTA.tRy.jo4d4XRkgnamcOJfw5pJ8Ao/RDS','testUser@test.com');
 
 INSERT INTO user_roles (user, role) VALUES 
@@ -234,6 +242,7 @@ INSERT INTO socials (title, description, theme) VALUES
 	('Christmas Dinner', 'Celebrate the holiday season with a delicious feast!', 'Christmas'),
 	('New Year''s Eve Bash', 'Ring in the new year with drinks, dancing, and great company!', 'New Year'),
 	('Networking Event', 'Meet new people and expand your professional network!', 'Business'),
+	('Off-topic', 'A place to talk about anything and everything', 'Other'),
 	('Charity Fundraiser', 'Support a good cause and make a difference in your community!', 'Charity');
 
 INSERT INTO games (title, description, playtime) VALUES 
@@ -241,7 +250,9 @@ INSERT INTO games (title, description, playtime) VALUES
 	('Grand Theft Auto V', 'Action-adventure game developed by Rockstar North and published by Rockstar Games', 360),
 	('Minecraft', 'Sandbox video game developed and published by Mojang Studios', 720),
 	('Overwatch', 'First-person shooter game developed and published by Blizzard Entertainment', 180),
-	('The Witcher 3: Wild Hunt', 'Action role-playing game developed and published by CD Projekt', 180);
+	('Fortnite', 'Action shooter Battle royale game developed by Epic Games', 500),
+	('Phasmophobia', 'Action role-playing game developed and published by CD Projekt', 180),
+	('The Witcher 3: Wild Hunt', 'Multiplayer Co-op ghost hunting game developed and published by Kinetic Games', 300);
 
 
 INSERT INTO activities (title, description, activity_type) VALUES 
