@@ -89,7 +89,7 @@ public class CommentController {
 
 	    // Delete the comment
 	    commentService.deleteComment(id);
-	    return ResponseEntity.ok("Comment deleted successfully.");
+	    return ResponseEntity.ok().body("Comment deleted successfully.");
 	}
 
 }
