@@ -63,7 +63,7 @@ public class CommentController {
 	}
 
 	@DeleteMapping("/comments/{id}")
-	public ResponseEntity<String> deleteComment(@PathVariable(name = "id") Long id, Authentication authentication) {
+	public String deleteComment(@PathVariable(name = "id") Long id, Authentication authentication) {
 	    // Retrieve the authenticated user's details
 	    UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 	    
@@ -75,7 +75,7 @@ public class CommentController {
 	    Comment comment = commentService.commentById(id);
 	    if (comment == null) {
 	        // Comment not found
-	        return ResponseEntity.notFound().build();
+	        return "Comment not found";
 	    }
 
 	    // Get the comment creator
@@ -84,12 +84,12 @@ public class CommentController {
 	    // Check if the authenticated user is the comment creator or has the role "ADMIN"
 	    if (!authentication.getName().equals(commentCreator.getUsername()) && !isAdmin) {
 	        // User is not authorized to delete the comment
-	        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not authorized to delete this comment.");
+	        return "You are not authorized to delete this comment.";
 	    }
 
 	    // Delete the comment
 	    commentService.deleteComment(id);
-	    return ResponseEntity.ok().body("Comment deleted successfully.");
+	    return "Comment deleted successfully.";
 	}
 
 }
